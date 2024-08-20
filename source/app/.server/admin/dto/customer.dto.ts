@@ -1,4 +1,5 @@
 import type {Customer, CustomerAddress} from '@prisma/client';
+import { TProductReviewDto } from './productReview.dto';
 
 type ExcludedField = 'id' | 'password' | 'createdAt' | 'updatedAt' | 'deletedAt'
 export type TCustomerDto = Omit<Customer, ExcludedField> & {
@@ -7,6 +8,7 @@ export type TCustomerDto = Omit<Customer, ExcludedField> & {
   updatedAt: string;
   deletedAt: string | null;
   addresses: TCustomerAddressDto[];
+  reviews: TProductReviewDto[];
 }
 
 type ExcludedAddressField = 'id' | 'customerId' | 'createdAt' | 'updatedAt'

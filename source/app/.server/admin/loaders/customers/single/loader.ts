@@ -19,6 +19,7 @@ export async function loader({request, params}: LoaderFunctionArgs) {
   const customer = await prisma.customer.findFirst({
     include: {
       addresses: true,
+      reviews: true,
     },
     where: {id: Number(id)}
   });
