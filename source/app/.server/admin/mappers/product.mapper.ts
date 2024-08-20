@@ -25,7 +25,7 @@ export const productMapper = (product: ProductWithRelations): TProductDto => {
     totalReviews: String(product.totalReviews),
     categoryId: product.categoryId ? String(product.categoryId) : null,
     category: product.category ? categoryMapper(product.category) : null,
-    reviews: product.reviews.map(ProductReviewMapper),
+    reviews: product.reviews?.map(ProductReviewMapper),
     createdAt: product.createdAt.toJSON(),
     updatedAt: product.updatedAt.toJSON(),
     deletedAt: product.deletedAt ? product.deletedAt.toJSON() : null,
