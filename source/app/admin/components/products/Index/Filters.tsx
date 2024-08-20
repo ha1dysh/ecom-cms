@@ -6,6 +6,10 @@ import {reqSortToSort, sortArrToReqSort} from '~/admin/utils/filter.util';
 import {ESoftDeleteStatus} from '~/admin/constants/entries.constant';
 
 export enum EProductsSortVariant {
+  totalReviews_asc = 'totalReviews_asc',
+  totalReviews_desc = 'totalReviews_desc',
+  avgRate_asc = 'avgRate_asc',
+  avgRate_desc = 'avgRate_desc',
   createdAt_asc = 'createdAt_asc',
   createdAt_desc = 'createdAt_desc',
   updatedAt_asc = 'updatedAt_asc',
@@ -29,6 +33,26 @@ export const Filters: FC<FiltersProps> = ({query}) => {
 
   /* SORT START */
   const sortOptions: IndexFiltersProps['sortOptions'] = [
+    {
+      label: 'Total reviews',
+      value: reqSortToSort(EProductsSortVariant.totalReviews_asc),
+      directionLabel: 'Low to high'
+    },
+    {
+      label: 'Total reviews',
+      value: reqSortToSort(EProductsSortVariant.totalReviews_desc),
+      directionLabel: 'High to low'
+    },
+    {
+      label: 'Average rating',
+      value: reqSortToSort(EProductsSortVariant.avgRate_asc),
+      directionLabel: 'Low to high'
+    },
+    {
+      label: 'Average rating',
+      value: reqSortToSort(EProductsSortVariant.avgRate_desc),
+      directionLabel: 'High to low'
+    },
     {
       label: 'Title',
       value: reqSortToSort(EProductsSortVariant.title_asc),

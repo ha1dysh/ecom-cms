@@ -26,6 +26,8 @@ export const Index: FC<ListProps> = ({products, query, pagination}) => {
   const headings: NonEmptyArray<IndexTableHeading> = useMemo(() => ([
     {title: 'Title'},
     {title: 'Slug'},
+    {title: 'Total reviews'},
+    {title: 'Average rating'},
     {title: 'Category'},
     {title: 'SKU'},
     {title: 'Barcode'},
@@ -35,7 +37,7 @@ export const Index: FC<ListProps> = ({products, query, pagination}) => {
 
   const rowMarkup = products.map(
     (
-      {id, title, slug, sku, barcode, status, quantity, category},
+      {id, title, totalReviews, avgRate, slug, sku, barcode, status, quantity, category},
       index,
     ) => (
       <IndexTable.Row
@@ -47,6 +49,8 @@ export const Index: FC<ListProps> = ({products, query, pagination}) => {
           <Link url={`${EAdminNavigation.products}/${id}`}>{title}</Link>
         </IndexTable.Cell>
         <IndexTable.Cell>{slug}</IndexTable.Cell>
+        <IndexTable.Cell>{totalReviews}</IndexTable.Cell>
+        <IndexTable.Cell>{avgRate}</IndexTable.Cell>
         <IndexTable.Cell>{category?.title || '-/-'}</IndexTable.Cell>
         <IndexTable.Cell>{sku}</IndexTable.Cell>
         <IndexTable.Cell>{barcode}</IndexTable.Cell>
