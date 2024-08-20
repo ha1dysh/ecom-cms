@@ -44,6 +44,7 @@ model Customer {
   deletedAt DateTime?
 
   addresses CustomerAddress[]
+  reviews   ProductReview[]
 
   @@index([createdAt], name: "CustomerCreatedAtIndex")
   @@index([updatedAt], name: "CustomerUpdatedAtIndex")
@@ -111,10 +112,10 @@ model Product {
   categoryId Int?
   category   Category? @relation(fields: [categoryId], references: [id])
 
-  // categories      Category[]
+  reviews ProductReview[]
+
   // images          ProductImage[]
   // variants        ProductVariant[]
-  // reviews         ProductReview[]
 
   @@index([status], name: "ProductStatusIndex")
   @@index([categoryId], name: "ProductCategoryIdIndex")
@@ -126,6 +127,28 @@ model Product {
   @@index([compareAtPrice], name: "ProductCompareAtPriceIndex")
   @@index([avgRate], name: "ProductAvgRateIndex")
   @@index([totalReviews], name: "ProductTotalReviewsIndex")
+}
+
+model ProductReview {
+  id         Int       @id @default(autoincrement())
+  productId  Int
+  customerId Int
+  rate       Int
+  review     String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+
+  product  Product  @relation(fields: [productId], references: [id])
+  customer Customer @relation(fields: [customerId], references: [id])
+
+  @@index([rate], name: "ReviewRateIndex")
+  @@index([review], name: "ReviewIndex")
+  @@index([productId], name: "ReviewProductIdIndex")
+  @@index([customerId], name: "ReviewCustomerIdIndex")
+  @@index([createdAt], name: "ReviewCreatedAtIndex")
+  @@index([updatedAt], name: "ReviewUpdatedAtIndex")
+  @@index([deletedAt], name: "ReviewDeletedAtIndex")
 }
 
 // Enums
