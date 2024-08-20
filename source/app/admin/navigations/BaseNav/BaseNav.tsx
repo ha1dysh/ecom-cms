@@ -27,11 +27,11 @@ export const BaseNav = () => {
             label: 'Customers',
             icon: PersonIcon,
           },
-          {
-            url: EAdminNavigation.categories,
-            label: 'Categories',
-            icon: PersonIcon,
-          },
+          // {
+          //   url: EAdminNavigation.categories,
+          //   label: 'Categories',
+          //   icon: PersonIcon,
+          // },
           {
             url: EAdminNavigation.products,
             label: 'Products',
@@ -41,6 +41,11 @@ export const BaseNav = () => {
                 url: EAdminNavigation.categories,
                 disabled: false,
                 label: 'Categories',
+              },
+              {
+                url: EAdminNavigation.reviews,
+                disabled: false,
+                label: 'Reviews',
               },
             ],
           },
