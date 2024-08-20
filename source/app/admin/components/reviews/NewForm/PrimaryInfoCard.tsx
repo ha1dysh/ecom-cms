@@ -9,7 +9,7 @@ import { EAdminNavigation } from '~/admin/constants/navigation.constant';
 import { TAdminApiCustomersLoader, TAdminApiCustomersLoaderData } from '~/.server/admin/loaders/api/customers/index/loader';
 
 type Props = {
-  review?: TProductReviewDto
+  productReview?: TProductReviewDto
 }
 
 const productsResponseToOptions = (data?: TAdminApiProductsLoaderData) => {
@@ -27,7 +27,7 @@ const customersResponseToOptions = (data?: TAdminApiCustomersLoaderData) => {
 };
 
 export const PrimaryInfoCard: FC<Props> = (props) => {
-  const {review} = props;
+  const {productReview} = props;
 
   return (
     <Card>
@@ -40,23 +40,25 @@ export const PrimaryInfoCard: FC<Props> = (props) => {
             label="Rate"
             name="rate"
             options={["0", "1", "2", "3", "4", "5"]}
-            defaultValue={String(review?.rate)}
+            defaultValue={String(productReview?.rate)}
           />
           <ValidatedTextField
             label="Review"
             type="text"
             name="review"
             autoComplete="off"
-            defaultValue={review?.review}
+            defaultValue={productReview?.review}
             multiline={5}
           />
            <ValidatedLazyAutocomplete<TAdminApiProductsLoader>
+            key='product'
             label="Products"
             name="productId"
             url={EAdminNavigation.apiProducts}
             responseToOptions={productsResponseToOptions}
           />
            <ValidatedLazyAutocomplete<TAdminApiCustomersLoader>
+            key='customer'
             label="Customers"
             name="customerId"
             url={EAdminNavigation.apiCustomers}
