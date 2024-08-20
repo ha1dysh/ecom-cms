@@ -46,10 +46,8 @@ export const ValidatedLazyAutocomplete = <TData = unknown>(props: ValidatedLazyA
   }, [defaultValue?.value]);
 
   useEffect(() => {
-    if (fetcher.state === 'idle') {
       if (fetcher.data) {
         setOptions(responseToOptions(fetcher.data));
-      }
     }
   }, [fetcher.data]);
 
