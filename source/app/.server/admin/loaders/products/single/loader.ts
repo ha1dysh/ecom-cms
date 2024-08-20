@@ -20,9 +20,9 @@ export async function loader({request, params}: LoaderFunctionArgs) {
   const product = await prisma.product.findFirst({
     include: {
       category: true,
-      reviews: true,
+      reviews: { where: { deletedAt: null } },
     },
-    where: {id: Number(id)}
+    where: { id: Number(id) },
   });
 
   // if not exist

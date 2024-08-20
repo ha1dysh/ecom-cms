@@ -48,6 +48,22 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
+            Total reviews
+          </Text>
+          <Text as="p" variant="bodyMd">
+            {product.totalReviews}
+          </Text>
+        </BlockStack>
+        <BlockStack gap="200">
+          <Text as="h3" variant="headingXs" fontWeight="medium">
+            Average rating
+          </Text>
+          <Text as="p" variant="bodyMd">
+            {product.avgRate}
+          </Text>
+        </BlockStack>
+        <BlockStack gap="200">
+          <Text as="h3" variant="headingXs" fontWeight="medium">
             SKU
           </Text>
           <Text as="p" variant="bodyMd">

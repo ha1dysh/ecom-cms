@@ -25,5 +25,21 @@ export async function action({request}: ActionFunctionArgs) {
     data: { rate, review, productId, customerId }
   });
 
+  if (newReview) {
+    const totalReviews = await prisma.productReview.count({
+      where: { productId, deletedAt: null }
+    });
+    const { _avg } = await prisma.productReview.aggregate({
+      where: { productId, deletedAt: null },
+      _avg: { rate: true }
+    });
+    const avgRate = (_avg.rate && _avg.rate * 100) || 0;
+
+    await prisma.product.update({
+      where: { id: productId },
+      data: { totalReviews, avgRate }
+    });
+  }
+
   return redirect(`${EAdminNavigation.reviews}/${newReview.id}`);
 }

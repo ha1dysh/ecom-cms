@@ -38,6 +38,16 @@ export async function action({request, params}: ActionFunctionArgs) {
     data: { customerId, productId, rate, review },
   });
 
-  // redirect to user page
+  const { _avg } = await prisma.productReview.aggregate({
+    where: { productId: productReview.productId, deletedAt: null },
+    _avg: { rate: true },
+  });
+  const avgRate = (_avg.rate && _avg.rate * 100) || 0;
+
+  await prisma.product.update({
+    where: { id: productReview.productId },
+    data: { avgRate },
+  });
+
   return redirect(`${EAdminNavigation.reviews}/${id}`);
 }

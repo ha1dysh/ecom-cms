@@ -21,12 +21,28 @@ export async function action({request, params}: ActionFunctionArgs) {
     return redirect(EAdminNavigation.reviews);
   }
 
-  await prisma.productReview.update({
+  const deleted = await prisma.productReview.update({
     where: {id: Number(id)},
     data: {
       deletedAt: new Date()
     }
   });
+
+  if (deleted) {
+    const totalReviews =await prisma.productReview.count({
+      where: { productId: productReview.productId, deletedAt: null }
+    });
+    const { _avg } = await prisma.productReview.aggregate({
+      where: { productId: productReview.productId, deletedAt: null },
+      _avg: { rate: true },
+    });
+    const avgRate = (_avg.rate && _avg.rate * 100) || 0;
+
+    await prisma.product.update({
+      where: { id: productReview.productId },
+      data: { totalReviews, avgRate },
+    });
+  }
 
   return redirect(`${EAdminNavigation.reviews}/${id}`);
 }
