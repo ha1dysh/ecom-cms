@@ -34,18 +34,22 @@ export default function AdminProductsIdIndex() {
     <Page
       title={`${data?.product.title}`}
       backAction={{
-        url: EAdminNavigation.products
+        url: EAdminNavigation.products,
       }}
       secondaryActions={secondaryActions}
     >
-      <Single product={data?.product} categories={data?.categories || []}/>
+      <Single
+        product={data?.product}
+        categories={data?.categories || []}
+        pagination={data?.pagination}
+      />
       <Modal
         size="small"
         open={active}
         onClose={toggleActive}
         title="Delete product"
       >
-        <DeleteForm toggleActive={toggleActive} product={data?.product}/>
+        <DeleteForm toggleActive={toggleActive} product={data?.product} />
       </Modal>
     </Page>
   );

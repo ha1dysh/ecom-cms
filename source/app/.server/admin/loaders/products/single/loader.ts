@@ -5,11 +5,14 @@ import {prisma} from '~/.server/shared/services/prisma.service';
 import {productMapper} from '~/.server/admin/mappers/product.mapper';
 import {SerializeFrom} from '@remix-run/server-runtime';
 import {categoryMapper} from '~/.server/admin/mappers/category.mapper';
+import { requestToSearchParams, queryToPagination, hasNextCalculate } from '~/.server/admin/utils/query.util';
 
 export async function loader({request, params}: LoaderFunctionArgs) {
   await authenticator.isAuthenticated(request, {
     failureRedirect: EAdminNavigation.authLogin,
   });
+  const searchParams = requestToSearchParams(request);
+  const pagination = await queryToPagination(searchParams);
 
   const {id} = params;
   if (!id) {
@@ -18,11 +21,15 @@ export async function loader({request, params}: LoaderFunctionArgs) {
 
   // get user
   const product = await prisma.product.findFirst({
+    where: { id: Number(id) },
     include: {
       category: true,
-      reviews: { where: { deletedAt: null } },
+      reviews: {
+        where: { deletedAt: null },
+        take: pagination.take,
+        skip: pagination.skip,
+      },
     },
-    where: { id: Number(id) },
   });
 
   // if not exist
@@ -30,13 +37,23 @@ export async function loader({request, params}: LoaderFunctionArgs) {
     return redirect(EAdminNavigation.products);
   }
 
+  pagination.count = product.reviews.length;
+  pagination.total = await prisma.productReview.count({
+    where: { productId: product.id, deletedAt: null }
+  });
+  pagination.hasNext = hasNextCalculate(pagination);
+
   const categories = await prisma.category.findMany({
     where: {
       deletedAt: null,
     }
   });
 
-  return json({product: productMapper(product), categories: categories.map(categoryMapper)});
+  return json({
+    product: productMapper(product),
+    categories: categories.map(categoryMapper),
+    pagination
+  });
 }
 
 export type TAdminProductsSingleLoader = typeof loader;
