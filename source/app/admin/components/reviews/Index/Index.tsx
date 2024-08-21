@@ -15,7 +15,6 @@ export interface ListProps {
   pagination: IOffsetPaginationInfoDto;
 }
 
-
 export const Index: FC<ListProps> = ({productReviews, query, pagination}) => {
   const paginationProps = usePagination(pagination);
   const resourceName = useMemo(() => ({
@@ -26,8 +25,8 @@ export const Index: FC<ListProps> = ({productReviews, query, pagination}) => {
   const headings: NonEmptyArray<IndexTableHeading> = useMemo(() => ([
     {title: 'Rate'},
     {title: 'Review'},
-    {title: 'Customer id'},
-    {title: 'Product id'},
+    {title: 'Customer Name'},
+    {title: 'Product'},
     {title: 'Created at'},
     {title: 'Updated at'},
     {title: 'Deleted at'},
@@ -35,29 +34,29 @@ export const Index: FC<ListProps> = ({productReviews, query, pagination}) => {
 
   const rowMarkup = productReviews.map(
     (
-      {id, rate, review, customerId, productId, createdAt, updatedAt, deletedAt},
-      index,
+      { id, rate, review, product, customer, customerId, productId, createdAt, updatedAt, deletedAt },
+      index
     ) => (
-      <IndexTable.Row
-        id={id}
-        key={id}
-        position={index}
-      >
+      <IndexTable.Row id={id} key={id} position={index}>
         <IndexTable.Cell>
           <Link url={`${EAdminNavigation.reviews}/${id}`}>{rate}</Link>
         </IndexTable.Cell>
         <IndexTable.Cell>{review}</IndexTable.Cell>
         <IndexTable.Cell>
-          <Link url={`${EAdminNavigation.customers}/${customerId}`}>{customerId}</Link>
+          <Link
+            url={`${EAdminNavigation.customers}/${customerId}`}
+          >{`${customer?.firstName} ${customer?.lastName}`}</Link>
         </IndexTable.Cell>
         <IndexTable.Cell>
-          <Link url={`${EAdminNavigation.products}/${productId}`}>{productId}</Link>
+          <Link url={`${EAdminNavigation.products}/${productId}`}>
+            {product?.title}
+          </Link>
         </IndexTable.Cell>
         <IndexTable.Cell>{createdAt}</IndexTable.Cell>
         <IndexTable.Cell>{updatedAt}</IndexTable.Cell>
         <IndexTable.Cell>{deletedAt}</IndexTable.Cell>
       </IndexTable.Row>
-    ),
+    )
   );
 
   return (

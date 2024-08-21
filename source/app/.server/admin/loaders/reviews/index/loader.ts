@@ -58,12 +58,16 @@ export async function loader({request}: LoaderFunctionArgs) {
   }
 
   const productReviews = await prisma.productReview.findMany({
-    take: pagination.take,
-    skip: pagination.skip,
     where: {
       ...searchQuery,
       ...filterAccountStatusQuery,
     },
+    include: {
+      product: true,
+      customer: true,
+    },
+    take: pagination.take,
+    skip: pagination.skip,
     orderBy
   });
 
