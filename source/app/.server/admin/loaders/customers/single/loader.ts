@@ -5,6 +5,7 @@ import {prisma} from '~/.server/shared/services/prisma.service';
 import {customerMapper} from '~/.server/admin/mappers/customer.mapper';
 import {SerializeFrom} from '@remix-run/server-runtime';
 import { hasNextCalculate, queryToPagination, requestToSearchParams } from '~/.server/admin/utils/query.util';
+import { ProductReviewMapper } from '~/.server/admin/mappers/productReview.mapper';
 
 export async function loader({request, params}: LoaderFunctionArgs) {
   await authenticator.isAuthenticated(request, {
@@ -24,11 +25,6 @@ export async function loader({request, params}: LoaderFunctionArgs) {
     where: { id: Number(id) },
     include: {
       addresses: true,
-      reviews: {
-        where: { deletedAt: null },
-        take: pagination.take,
-        skip: pagination.skip,
-      },
     },
   });
 
@@ -38,13 +34,23 @@ export async function loader({request, params}: LoaderFunctionArgs) {
     return redirect(EAdminNavigation.customers);
   }
 
-  pagination.count = customer.reviews.length;
+  const reviews = await prisma.productReview.findMany({
+    where: { customerId: customer.id, deletedAt: null },
+    take: pagination.take,
+    skip: pagination.skip,
+  });
+
+  pagination.count = reviews.length;
   pagination.total = await prisma.productReview.count({
     where: { customerId: customer.id, deletedAt: null },
   });
   pagination.hasNext = hasNextCalculate(pagination);
 
-  return json({customer: customerMapper(customer), pagination});
+  return json({
+    customer: customerMapper(customer),
+    reviews: reviews.map(ProductReviewMapper),
+    pagination,
+  });
 }
 
 export type TAdminCustomersSingleLoader = typeof loader;

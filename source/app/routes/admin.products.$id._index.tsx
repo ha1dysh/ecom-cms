@@ -41,6 +41,7 @@ export default function AdminProductsIdIndex() {
       <Single
         product={data?.product}
         categories={data?.categories || []}
+        reviews={data?.reviews}
         pagination={data?.pagination}
       />
       <Modal

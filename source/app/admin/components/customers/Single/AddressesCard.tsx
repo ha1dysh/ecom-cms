@@ -2,7 +2,7 @@ import {BlockStack, Box, Button, Card, InlineGrid, ResourceItem, ResourceList, T
 import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {PlusIcon} from '@shopify/polaris-icons';
 import React, {FC, useCallback, useMemo} from 'react';
-import type {TCustomerDto} from '~/.server/admin/dto/customer.dto';
+import type {TCustomerAddressDto, TCustomerDto} from '~/.server/admin/dto/customer.dto';
 
 export type AddressesCardProps = {
   customer: TCustomerDto;
@@ -11,7 +11,7 @@ export type AddressesCardProps = {
 export const AddressesCard: FC<AddressesCardProps> = ({customer}) => {
   const resourceName = useMemo(() => ({singular: 'address', plural: 'addresses'}), []);
 
-  const renderItem = useCallback((item: TCustomerDto['addresses'][0]) => {
+  const renderItem = useCallback((item: TCustomerAddressDto) => {
     const {id, lastName, firstName, address, phone, city, country, apartment, company, postalCode} = item;
 
     const shortcutActions = [
@@ -81,7 +81,7 @@ export const AddressesCard: FC<AddressesCardProps> = ({customer}) => {
       </Box>
       <ResourceList
         resourceName={resourceName}
-        items={customer.addresses}
+        items={customer.addresses || []}
         renderItem={renderItem}
       />
     </Card>

@@ -5,20 +5,22 @@ import {TCustomerDto} from '~/.server/admin/dto/customer.dto';
 import {AddressesCard} from '~/admin/components/customers/Single/AddressesCard';
 import { ReviewsCard } from '../../products/Single/ReviewsCard';
 import { IOffsetPaginationInfoDto } from '~/.server/shared/dto/offset-pagination-info.dto';
+import { TProductReviewDto } from '~/.server/admin/dto/productReview.dto';
 
 export type SingleProps = {
   customer: TCustomerDto;
+  reviews: TProductReviewDto[]
   pagination: IOffsetPaginationInfoDto;
 }
 
-export const Single: FC<SingleProps> = ({customer, pagination}) => {
+export const Single: FC<SingleProps> = ({customer, reviews, pagination}) => {
 
   return (
     <Layout>
       <Layout.Section>
         <BlockStack gap="500">
           <PrimaryInfoCard customer={customer} />
-          <ReviewsCard reviews={customer.reviews} pagination={pagination} />
+          <ReviewsCard pagination={pagination} reviews={reviews} />
         </BlockStack>
       </Layout.Section>
 

@@ -6,6 +6,7 @@ import {productMapper} from '~/.server/admin/mappers/product.mapper';
 import {SerializeFrom} from '@remix-run/server-runtime';
 import {categoryMapper} from '~/.server/admin/mappers/category.mapper';
 import { requestToSearchParams, queryToPagination, hasNextCalculate } from '~/.server/admin/utils/query.util';
+import { ProductReviewMapper } from '~/.server/admin/mappers/productReview.mapper';
 
 export async function loader({request, params}: LoaderFunctionArgs) {
   await authenticator.isAuthenticated(request, {
@@ -49,9 +50,16 @@ export async function loader({request, params}: LoaderFunctionArgs) {
     }
   });
 
+  const reviews = await prisma.productReview.findMany({
+    where: { productId: product.id, deletedAt: null },
+    take: pagination.take,
+    skip: pagination.skip,
+  });
+
   return json({
     product: productMapper(product),
     categories: categories.map(categoryMapper),
+    reviews: reviews.map(ProductReviewMapper),
     pagination
   });
 }

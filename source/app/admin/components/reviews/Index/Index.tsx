@@ -1,12 +1,10 @@
 import {Card, IndexTable, Link,} from '@shopify/polaris';
-import React, {FC, useMemo} from 'react';
+import {FC, useMemo} from 'react';
 import type {NonEmptyArray} from '@shopify/polaris/build/ts/src/types';
 import {IndexTableHeading} from '@shopify/polaris/build/ts/src/components/IndexTable/IndexTable';
 import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {IOffsetPaginationInfoDto} from '~/.server/shared/dto/offset-pagination-info.dto';
 import {usePagination} from '~/admin/hooks/usePagination';
-import {TCategoryDto} from '~/.server/admin/dto/category.dto';
-import type {TAdminCategoriesLoaderData} from '~/.server/admin/loaders/categories/index/loader';
 import {Filters} from './Filters';
 import { TProductReviewDto } from '~/.server/admin/dto/productReview.dto';
 import { TAdminProductReviewsLoaderData } from '~/.server/admin/loaders/reviews/index/loader';

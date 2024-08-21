@@ -4,9 +4,10 @@ import {FC} from 'react';
 import {TProductDto} from '~/.server/admin/dto/product.dto';
 import { IOffsetPaginationInfoDto } from '~/.server/shared/dto/offset-pagination-info.dto';
 import { usePagination } from '~/admin/hooks/usePagination';
+import { TProductReviewDto } from '~/.server/admin/dto/productReview.dto';
 
 export type PrimaryInfoCardProps = {
-  reviews: TProductDto['reviews'];
+  reviews: TProductReviewDto[];
   pagination: IOffsetPaginationInfoDto;
 }
 
@@ -31,7 +32,7 @@ function ReviewsList({
   reviews,
   pagination,
 }: {
-  reviews: TProductDto["reviews"];
+  reviews: TProductReviewDto[];
   pagination: IOffsetPaginationInfoDto;
 }) {
   const paginationProps = usePagination(pagination);

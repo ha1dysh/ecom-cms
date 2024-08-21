@@ -6,21 +6,23 @@ import {CategoryCard} from '~/admin/components/products/Single/CategoryCard';
 import {TCategoryDto} from '~/.server/admin/dto/category.dto';
 import { ReviewsCard } from './ReviewsCard';
 import { IOffsetPaginationInfoDto } from '~/.server/shared/dto/offset-pagination-info.dto';
+import { TProductReviewDto } from '~/.server/admin/dto/productReview.dto';
 
 export type SingleProps = {
   product: TProductDto;
   categories: TCategoryDto[];
+  reviews: TProductReviewDto[]
   pagination: IOffsetPaginationInfoDto;
 }
 
-export const Single: FC<SingleProps> = ({product, categories, pagination}) => {
+export const Single: FC<SingleProps> = ({product, categories, reviews, pagination}) => {
 
   return (
     <Layout>
       <Layout.Section>
         <BlockStack gap="500">
           <PrimaryInfoCard product={product} />
-          <ReviewsCard reviews={product.reviews} pagination={pagination} />
+          <ReviewsCard reviews={reviews} pagination={pagination} />
         </BlockStack>
       </Layout.Section>
 

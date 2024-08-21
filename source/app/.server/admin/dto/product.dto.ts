@@ -1,6 +1,5 @@
 import type {Product} from '@prisma/client';
 import {TCategoryDto} from '~/.server/admin/dto/category.dto';
-import { TProductReviewDto } from './productReview.dto';
 
 type ExcludedField = 'id' | 'createdAt' | 'updatedAt' | 'deletedAt' | 'price' |
   'costPerItem' | 'compareAtPrice' | 'quantity' | 'avgRate' | 'totalReviews' | 'categoryId';
@@ -16,6 +15,5 @@ export type TProductDto = Omit<Product, ExcludedField> & {
   updatedAt: string;
   deletedAt: string | null;
   categoryId: string | null;
-  category: TCategoryDto | null;
-  reviews: TProductReviewDto[];
+  category?: TCategoryDto | null;
 }

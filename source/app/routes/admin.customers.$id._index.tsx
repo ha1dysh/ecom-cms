@@ -34,18 +34,25 @@ export default function AdminCustomersSingle() {
     <Page
       title={`${data?.customer.firstName} ${data?.customer.lastName}`}
       backAction={{
-        url: EAdminNavigation.customers
+        url: EAdminNavigation.customers,
       }}
       secondaryActions={secondaryActions}
     >
-      <Single customer={data?.customer} pagination={data?.pagination}/>
+      <Single
+        customer={data?.customer}
+        reviews={data?.reviews}
+        pagination={data?.pagination}
+      />
       <Modal
         size="small"
         open={active}
         onClose={toggleActive}
         title="Delete customer"
       >
-        <CustomerDeleteForm toggleActive={toggleActive} customer={data?.customer}/>
+        <CustomerDeleteForm
+          toggleActive={toggleActive}
+          customer={data?.customer}
+        />
       </Modal>
     </Page>
   );

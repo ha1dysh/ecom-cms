@@ -1,7 +1,14 @@
-import { ProductReview } from "@prisma/client";
+import { Customer, Product, ProductReview } from "@prisma/client";
 import { TProductReviewDto } from "../dto/productReview.dto";
+import { productMapper } from "./product.mapper";
+import { customerMapper } from "./customer.mapper";
 
-export const ProductReviewMapper = (productReview: ProductReview): TProductReviewDto => {
+type ProductReviewWithRelations = ProductReview & {
+  product?: Product;
+  customer?: Customer;
+};
+
+export const ProductReviewMapper = (productReview: ProductReviewWithRelations): TProductReviewDto => {
 
   return {
     id: String(productReview.id),
@@ -9,6 +16,8 @@ export const ProductReviewMapper = (productReview: ProductReview): TProductRevie
     review: productReview.review,
     productId: productReview.productId,
     customerId: productReview.customerId,
+    product: productReview.product ? productMapper(productReview.product) : null,
+    customer: productReview.customer ? customerMapper(productReview.customer) : null,
     createdAt: productReview.createdAt.toJSON(),
     updatedAt: productReview.updatedAt.toJSON(),
     deletedAt: productReview.deletedAt ? productReview.deletedAt.toJSON() : null,
