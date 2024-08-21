@@ -7,9 +7,13 @@ import { TAdminApiProductsLoader, TAdminApiProductsLoaderData } from '~/.server/
 import { ValidatedLazyAutocomplete } from '~/admin/ui/ValidatedLazyAutocomplete/ValidatedLazyAutocomplete';
 import { EAdminNavigation } from '~/admin/constants/navigation.constant';
 import { TAdminApiCustomersLoader, TAdminApiCustomersLoaderData } from '~/.server/admin/loaders/api/customers/index/loader';
+import { TProductDto } from '~/.server/admin/dto/product.dto';
+import { TCustomerDto } from '~/.server/admin/dto/customer.dto';
 
 type Props = {
   productReview?: TProductReviewDto
+  product?: TProductDto
+  customer?: TCustomerDto
 }
 
 const productsResponseToOptions = (data?: TAdminApiProductsLoaderData) => {
@@ -27,7 +31,17 @@ const customersResponseToOptions = (data?: TAdminApiCustomersLoaderData) => {
 };
 
 export const PrimaryInfoCard: FC<Props> = (props) => {
-  const {productReview} = props;
+  const {productReview, product, customer} = props;
+
+  const ProductDefaultValue = product ? {
+    label: `${product.title} (${product.slug})`,
+    value: product.id,
+  } : undefined;
+
+  const CustomerDefaultValue = customer ? {
+    label: `${customer.firstName} ${customer.lastName}`,
+    value: customer.id,
+  } : undefined;
 
   return (
     <Card>
@@ -56,6 +70,7 @@ export const PrimaryInfoCard: FC<Props> = (props) => {
             name="productId"
             url={EAdminNavigation.apiProducts}
             responseToOptions={productsResponseToOptions}
+            defaultValue={ProductDefaultValue}
           />
            <ValidatedLazyAutocomplete<TAdminApiCustomersLoader>
             key='customer'
@@ -63,6 +78,7 @@ export const PrimaryInfoCard: FC<Props> = (props) => {
             name="customerId"
             url={EAdminNavigation.apiCustomers}
             responseToOptions={customersResponseToOptions}
+            defaultValue={CustomerDefaultValue}
           />
         </FormLayout>
       </BlockStack>
