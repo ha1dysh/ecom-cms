@@ -64,7 +64,9 @@ export const Index: FC<ListProps> = ({productReviews, query, pagination}) => {
           </Link>
         </IndexTable.Cell>
         <IndexTable.Cell>{rate}</IndexTable.Cell>
-        <IndexTable.Cell>{review}</IndexTable.Cell>
+        <IndexTable.Cell>
+          {review?.length > 15 ? `${review.substring(0, 15)}...` : review}
+        </IndexTable.Cell>
         <IndexTable.Cell>{createdAt}</IndexTable.Cell>
         <IndexTable.Cell>{updatedAt}</IndexTable.Cell>
         <IndexTable.Cell>{deletedAt}</IndexTable.Cell>

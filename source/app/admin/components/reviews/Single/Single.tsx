@@ -15,9 +15,6 @@ export const Single: FC<SingleProps> = ({productReview}) => {
           <PrimaryInfoCard productReview={productReview}/>
         </BlockStack>
       </Layout.Section>
-
-      <Layout.Section variant="oneThird">
-      </Layout.Section>
     </Layout>
   );
 };
