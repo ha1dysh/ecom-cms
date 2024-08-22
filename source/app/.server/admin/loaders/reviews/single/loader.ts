@@ -18,7 +18,11 @@ export async function loader({request, params}: LoaderFunctionArgs) {
   }
 
   const productReview = await prisma.productReview.findFirst({
-    where: {id: Number(id)}
+    where: {id: Number(id)},
+    include: {
+      product: true,
+      customer: true,
+    },
   });
 
   if (!productReview) {
