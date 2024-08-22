@@ -22,14 +22,12 @@ export async function action({request, params}: ActionFunctionArgs) {
   }
 
   const deleted = await prisma.productReview.update({
-    where: {id: Number(id)},
-    data: {
-      deletedAt: new Date()
-    }
+    where: { id: Number(id) },
+    data: { deletedAt: new Date() },
   });
 
   if (deleted) {
-    const totalReviews =await prisma.productReview.count({
+    const totalReviews = await prisma.productReview.count({
       where: { productId: productReview.productId, deletedAt: null }
     });
     const { _avg } = await prisma.productReview.aggregate({

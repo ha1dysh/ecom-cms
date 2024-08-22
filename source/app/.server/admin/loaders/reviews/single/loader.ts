@@ -27,17 +27,9 @@ export async function loader({request, params}: LoaderFunctionArgs) {
 
   const product = await prisma.product.findFirst({
     where: { id: productReview.productId },
-    include: {
-      reviews: true,
-      category: true,
-    }
   });
   const customer = await prisma.customer.findFirst({
     where: { id: productReview.customerId },
-    include: {
-      addresses: true,
-      reviews: true,
-    }
   });
   if (!product || !customer) {
     return redirect(EAdminNavigation.reviews);

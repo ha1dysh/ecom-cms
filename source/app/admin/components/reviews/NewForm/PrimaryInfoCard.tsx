@@ -33,12 +33,12 @@ const customersResponseToOptions = (data?: TAdminApiCustomersLoaderData) => {
 export const PrimaryInfoCard: FC<Props> = (props) => {
   const {productReview, product, customer} = props;
 
-  const ProductDefaultValue = product ? {
+  const productDefaultValue = product ? {
     label: `${product.title} (${product.slug})`,
     value: product.id,
   } : undefined;
 
-  const CustomerDefaultValue = customer ? {
+  const customerDefaultValue = customer ? {
     label: `${customer.firstName} ${customer.lastName}`,
     value: customer.id,
   } : undefined;
@@ -70,7 +70,7 @@ export const PrimaryInfoCard: FC<Props> = (props) => {
             name="productId"
             url={EAdminNavigation.apiProducts}
             responseToOptions={productsResponseToOptions}
-            defaultValue={ProductDefaultValue}
+            defaultValue={productDefaultValue}
           />
            <ValidatedLazyAutocomplete<TAdminApiCustomersLoader>
             key='customer'
@@ -78,7 +78,7 @@ export const PrimaryInfoCard: FC<Props> = (props) => {
             name="customerId"
             url={EAdminNavigation.apiCustomers}
             responseToOptions={customersResponseToOptions}
-            defaultValue={CustomerDefaultValue}
+            defaultValue={customerDefaultValue}
           />
         </FormLayout>
       </BlockStack>
