@@ -33,7 +33,7 @@ export async function action({request}: ActionFunctionArgs) {
       where: { productId, deletedAt: null },
       _avg: { rate: true }
     });
-    const avgRate = (_avg.rate && _avg.rate * 100) || 0;
+    const avgRate = (_avg.rate && _avg.rate * 10) || 0;
 
     await prisma.product.update({
       where: { id: productId },
