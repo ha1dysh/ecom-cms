@@ -22,7 +22,7 @@ export const Single: FC<SingleProps> = ({product, categories, reviews, paginatio
       <Layout.Section>
         <BlockStack gap="500">
           <PrimaryInfoCard product={product} />
-          <ReviewsCard reviews={reviews} pagination={pagination} />
+         {reviews.length > 0 && <ReviewsCard reviews={reviews} pagination={pagination} />}
         </BlockStack>
       </Layout.Section>
 
