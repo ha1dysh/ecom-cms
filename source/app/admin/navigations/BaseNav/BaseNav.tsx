@@ -2,9 +2,31 @@ import {Navigation} from '@shopify/polaris';
 import {HomeIcon, OrderIcon, PersonIcon, ProductIcon, WorkIcon} from '@shopify/polaris-icons';
 import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {useLocation} from 'react-router';
+import { TUserDto } from '~/.server/admin/dto/user.dto';
+import { $Enums } from '@prisma/client';
 
-export const BaseNav = () => {
+export const BaseNav = ({user}: {user: TUserDto}) => {
   const location = useLocation();
+
+  if (user.role === $Enums.AdminRole.STUFF) {
+    return <Navigation location={location.pathname}>
+      <Navigation.Section
+        items={[
+          {
+            url: EAdminNavigation.dashboard,
+            label: 'Home',
+            icon: HomeIcon,
+            matchPaths: [EAdminNavigation.dashboard]
+          },
+          {
+            url: EAdminNavigation.products,
+            label: 'Products',
+            icon: ProductIcon,
+          }
+        ]}
+      />
+    </Navigation>
+  }
 
   return (
     <Navigation location={location.pathname}>
@@ -27,11 +49,6 @@ export const BaseNav = () => {
             label: 'Customers',
             icon: PersonIcon,
           },
-          // {
-          //   url: EAdminNavigation.categories,
-          //   label: 'Categories',
-          //   icon: PersonIcon,
-          // },
           {
             url: EAdminNavigation.products,
             label: 'Products',

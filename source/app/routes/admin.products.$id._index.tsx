@@ -5,11 +5,18 @@ import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {TAdminProductsSingleLoader} from '~/.server/admin/loaders/products/single/loader';
 import {Single} from '~/admin/components/products/Single/Single';
 import {DeleteForm} from '~/admin/components/products/Single/DeleteForm';
+import { adminLoader } from '~/.server/admin/loaders/admin.loader';
 
 export {action} from '~/.server/admin/actions/products/single/action';
 
 export default function AdminProductsIdIndex() {
   const data = useRouteLoaderData<TAdminProductsSingleLoader>('routes/admin.products.$id');
+  const userData = useRouteLoaderData<typeof adminLoader>('routes/admin');
+
+  if (!userData?.user) {
+    return null;
+  }
+
   const [active, setActive] = useState(false);
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
@@ -39,6 +46,7 @@ export default function AdminProductsIdIndex() {
       secondaryActions={secondaryActions}
     >
       <Single
+        user={userData?.user}
         product={data?.product}
         categories={data?.categories || []}
         reviews={data?.reviews}
