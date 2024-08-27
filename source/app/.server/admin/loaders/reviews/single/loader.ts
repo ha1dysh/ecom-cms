@@ -4,11 +4,15 @@ import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {prisma} from '~/.server/shared/services/prisma.service';
 import {SerializeFrom} from '@remix-run/server-runtime';
 import { ProductReviewMapper } from '~/.server/admin/mappers/productReview.mapper';
+import { $Enums } from '@prisma/client';
 
 export async function loader({request, params}: LoaderFunctionArgs) {
-  await authenticator.isAuthenticated(request, {
+  const user = await authenticator.isAuthenticated(request, {
     failureRedirect: EAdminNavigation.authLogin,
   });
+  if (user.role === $Enums.AdminRole.STUFF) {
+    return redirect(EAdminNavigation.dashboard);
+  }
 
   const {id} = params;
   if (!id) {

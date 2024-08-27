@@ -6,11 +6,15 @@ import {customerMapper} from '~/.server/admin/mappers/customer.mapper';
 import {SerializeFrom} from '@remix-run/server-runtime';
 import { hasNextCalculate, queryToPagination, requestToSearchParams } from '~/.server/admin/utils/query.util';
 import { ProductReviewMapper } from '~/.server/admin/mappers/productReview.mapper';
+import { $Enums } from '@prisma/client';
 
 export async function loader({request, params}: LoaderFunctionArgs) {
-  await authenticator.isAuthenticated(request, {
+  const user = await authenticator.isAuthenticated(request, {
     failureRedirect: EAdminNavigation.authLogin,
   });
+  if (user.role === $Enums.AdminRole.STUFF) {
+    return redirect(EAdminNavigation.dashboard);
+  }
   const searchParams = requestToSearchParams(request);
   const pagination = await queryToPagination(searchParams);
 

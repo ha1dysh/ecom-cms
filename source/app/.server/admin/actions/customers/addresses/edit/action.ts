@@ -6,11 +6,15 @@ import {prisma} from '~/.server/shared/services/prisma.service';
 import {EAdminCustomerAction, FORM_ACTION_FIELD} from '~/admin/constants/action.constant';
 import {deleteAddress} from '~/.server/admin/actions/customers/addresses/edit/delete-address';
 import {editAddress} from '~/.server/admin/actions/customers/addresses/edit/edit-address';
+import { $Enums } from '@prisma/client';
 
 export async function action({request, params}: ActionFunctionArgs) {
-  await authenticator.isAuthenticated(request, {
+  const user = await authenticator.isAuthenticated(request, {
     failureRedirect: EAdminNavigation.authLogin,
   });
+  if (user.role === $Enums.AdminRole.STUFF) {
+    return redirect(EAdminNavigation.dashboard);
+  }
 
   const {id, addressId} = params;
   if (!id || !addressId) {

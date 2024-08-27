@@ -4,11 +4,15 @@ import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {validationError} from 'remix-validated-form';
 import {prisma} from '~/.server/shared/services/prisma.service';
 import {newFormValidator} from '~/admin/components/categories/NewForm/NewForm.validator';
+import { $Enums } from '@prisma/client';
 
 export async function action({request}: ActionFunctionArgs) {
-  await authenticator.isAuthenticated(request, {
+  const user = await authenticator.isAuthenticated(request, {
     failureRedirect: EAdminNavigation.authLogin,
   });
+  if (user.role === $Enums.AdminRole.STUFF) {
+    return redirect(EAdminNavigation.dashboard);
+  }
 
   // validate form data
   const data = await newFormValidator.validate(
