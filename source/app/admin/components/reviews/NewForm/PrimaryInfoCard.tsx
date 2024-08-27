@@ -7,13 +7,9 @@ import { TAdminApiProductsLoader, TAdminApiProductsLoaderData } from '~/.server/
 import { ValidatedLazyAutocomplete } from '~/admin/ui/ValidatedLazyAutocomplete/ValidatedLazyAutocomplete';
 import { EAdminNavigation } from '~/admin/constants/navigation.constant';
 import { TAdminApiCustomersLoader, TAdminApiCustomersLoaderData } from '~/.server/admin/loaders/api/customers/index/loader';
-import { TProductDto } from '~/.server/admin/dto/product.dto';
-import { TCustomerDto } from '~/.server/admin/dto/customer.dto';
 
 type Props = {
   productReview?: TProductReviewDto
-  product?: TProductDto
-  customer?: TCustomerDto
 }
 
 const productsResponseToOptions = (data?: TAdminApiProductsLoaderData) => {
@@ -30,17 +26,15 @@ const customersResponseToOptions = (data?: TAdminApiCustomersLoaderData) => {
   })) || [];
 };
 
-export const PrimaryInfoCard: FC<Props> = (props) => {
-  const {productReview, product, customer} = props;
-
-  const productDefaultValue = product ? {
-    label: `${product.title} (${product.slug})`,
-    value: product.id,
+export const PrimaryInfoCard: FC<Props> = ({ productReview }) => {
+  const productDefaultValue = productReview?.product ? {
+    label: `${productReview?.product.title} (${productReview?.product.slug})`,
+    value: productReview?.product.id,
   } : undefined;
 
-  const customerDefaultValue = customer ? {
-    label: `${customer.firstName} ${customer.lastName}`,
-    value: customer.id,
+  const customerDefaultValue = productReview?.customer ? {
+    label: `${productReview?.customer.firstName} ${productReview?.customer.lastName}`,
+    value: productReview?.customer.id,
   } : undefined;
 
   return (
