@@ -7,22 +7,27 @@ import {TCategoryDto} from '~/.server/admin/dto/category.dto';
 import { ReviewsCard } from './ReviewsCard';
 import { IOffsetPaginationInfoDto } from '~/.server/shared/dto/offset-pagination-info.dto';
 import { TProductReviewDto } from '~/.server/admin/dto/productReview.dto';
+import { TUserDto } from '~/.server/admin/dto/user.dto';
+import { $Enums } from '@prisma/client';
 
 export type SingleProps = {
+  user: TUserDto;
   product: TProductDto;
   categories: TCategoryDto[];
   reviews: TProductReviewDto[]
   pagination: IOffsetPaginationInfoDto;
 }
 
-export const Single: FC<SingleProps> = ({product, categories, reviews, pagination}) => {
+export const Single: FC<SingleProps> = ({user, product, categories, reviews, pagination}) => {
+
+  const hideReviewsForStuff = user.role !== $Enums.AdminRole.STUFF;
 
   return (
     <Layout>
       <Layout.Section>
         <BlockStack gap="500">
           <PrimaryInfoCard product={product} />
-         {reviews.length > 0 && <ReviewsCard reviews={reviews} pagination={pagination} />}
+          {hideReviewsForStuff && <ReviewsCard reviews={reviews} pagination={pagination} />}
         </BlockStack>
       </Layout.Section>
 

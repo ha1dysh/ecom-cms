@@ -14,7 +14,7 @@ import {
 } from '~/.server/admin/loaders/api/categories/index/loader';
 
 type Props = {
-  category: Pick<TCategoryDto, 'id' | 'title' | 'slug'> | null;
+  category?: Pick<TCategoryDto, 'id' | 'title' | 'slug'> | null;
   categories: TCategoryDto[];
   toggleActive: () => void;
 }

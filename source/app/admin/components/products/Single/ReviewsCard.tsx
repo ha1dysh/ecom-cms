@@ -1,10 +1,11 @@
-import {Avatar, BlockStack, Card, InlineGrid, ResourceItem, ResourceList, Text} from '@shopify/polaris';
+import {Avatar, BlockStack, Card, EmptyState, InlineGrid, ResourceItem, ResourceList, Text} from '@shopify/polaris';
 import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {FC} from 'react';
 import {TProductDto} from '~/.server/admin/dto/product.dto';
 import { IOffsetPaginationInfoDto } from '~/.server/shared/dto/offset-pagination-info.dto';
 import { usePagination } from '~/admin/hooks/usePagination';
 import { TProductReviewDto } from '~/.server/admin/dto/productReview.dto';
+import { redirect } from '@remix-run/react';
 
 export type PrimaryInfoCardProps = {
   reviews: TProductReviewDto[];
@@ -37,6 +38,19 @@ function ReviewsList({
 }) {
   const paginationProps = usePagination(pagination);
 
+  const emptyStateMarkup = !reviews.length ? (
+    <EmptyState
+      heading="There are no reviews yet"
+      action={{
+        content: "Create Review",
+        url: EAdminNavigation.reviewsCreate,
+      }}
+      image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
+    >
+      <p>You can use the Reviews section to create, edit, and delete reviews.</p>
+    </EmptyState>
+  ) : undefined;
+
   return (
     <ResourceList
       resourceName={{ singular: "review", plural: "reviews" }}
@@ -60,6 +74,7 @@ function ReviewsList({
         );
       }}
       pagination={paginationProps}
+      emptyState={emptyStateMarkup}
     />
   );
 }

@@ -15,10 +15,6 @@ export const CategoryCard: FC<Props> = (props) => {
   const {category, categoryId} = product;
   const [active, setActive] = useState(false);
 
-  if (!category) {
-    return null;
-  }
-
   const toggleActive = useCallback(() => setActive((active) => !active), []);
 
   return (
