@@ -6,9 +6,11 @@ import {customerMapper} from '~/.server/admin/mappers/customer.mapper';
 import {SerializeFrom} from '@remix-run/server-runtime';
 import { hasNextCalculate, queryToPagination, requestToSearchParams } from '~/.server/admin/utils/query.util';
 import { ProductReviewMapper } from '~/.server/admin/mappers/productReview.mapper';
+import { hasAdminRoleOrRedirect } from '~/.server/admin/utils/auth.util';
 
 export async function loader({request, params}: LoaderFunctionArgs) {
-  await getAuthUser(request);
+  const authUser = await getAuthUser(request);
+  hasAdminRoleOrRedirect(authUser);
 
   const searchParams = requestToSearchParams(request);
   const pagination = await queryToPagination(searchParams);
