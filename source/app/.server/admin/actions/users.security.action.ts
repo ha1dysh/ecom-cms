@@ -1,19 +1,13 @@
 import {ActionFunctionArgs, redirect} from '@remix-run/node';
-import {authenticator} from '~/.server/admin/services/auth.service';
+import {getAuthUser} from '~/.server/admin/services/auth.service';
 import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {validationError} from 'remix-validated-form';
 import {prisma} from '~/.server/shared/services/prisma.service';
 import {usersSecurityFormValidator} from '~/admin/components/UsersSecurityForm/UsersSecurityForm.validator';
 import {hashPassword} from '~/.server/shared/utils/auth.util';
-import { $Enums } from '@prisma/client';
 
 export async function adminUsersSecurityAction({request, params}: ActionFunctionArgs) {
-  const userAdmin = await authenticator.isAuthenticated(request, {
-    failureRedirect: EAdminNavigation.authLogin,
-  });
-  if (userAdmin.role === $Enums.AdminRole.STUFF) {
-    return redirect(EAdminNavigation.dashboard);
-  }
+  await getAuthUser(request);
 
   const {id} = params;
   if (!id) {

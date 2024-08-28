@@ -1,20 +1,15 @@
 import {json, LoaderFunctionArgs, redirect} from '@remix-run/node';
-import {authenticator} from '~/.server/admin/services/auth.service';
+import {getAuthUser} from '~/.server/admin/services/auth.service';
 import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {prisma} from '~/.server/shared/services/prisma.service';
 import {customerMapper} from '~/.server/admin/mappers/customer.mapper';
 import {SerializeFrom} from '@remix-run/server-runtime';
 import { hasNextCalculate, queryToPagination, requestToSearchParams } from '~/.server/admin/utils/query.util';
 import { ProductReviewMapper } from '~/.server/admin/mappers/productReview.mapper';
-import { $Enums } from '@prisma/client';
 
 export async function loader({request, params}: LoaderFunctionArgs) {
-  const user = await authenticator.isAuthenticated(request, {
-    failureRedirect: EAdminNavigation.authLogin,
-  });
-  if (user.role === $Enums.AdminRole.STUFF) {
-    return redirect(EAdminNavigation.dashboard);
-  }
+  await getAuthUser(request);
+
   const searchParams = requestToSearchParams(request);
   const pagination = await queryToPagination(searchParams);
 

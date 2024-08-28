@@ -1,20 +1,14 @@
 import {ActionFunctionArgs, redirect} from '@remix-run/node';
-import {authenticator} from '~/.server/admin/services/auth.service';
+import {getAuthUser} from '~/.server/admin/services/auth.service';
 import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {validationError} from 'remix-validated-form';
 import {prisma} from '~/.server/shared/services/prisma.service';
 import {EAdminCustomerAction, FORM_ACTION_FIELD} from '~/admin/constants/action.constant';
 import {deleteAddress} from '~/.server/admin/actions/customers/addresses/edit/delete-address';
 import {editAddress} from '~/.server/admin/actions/customers/addresses/edit/edit-address';
-import { $Enums } from '@prisma/client';
 
 export async function action({request, params}: ActionFunctionArgs) {
-  const user = await authenticator.isAuthenticated(request, {
-    failureRedirect: EAdminNavigation.authLogin,
-  });
-  if (user.role === $Enums.AdminRole.STUFF) {
-    return redirect(EAdminNavigation.dashboard);
-  }
+  await getAuthUser(request);
 
   const {id, addressId} = params;
   if (!id || !addressId) {

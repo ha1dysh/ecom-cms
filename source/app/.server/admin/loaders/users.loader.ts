@@ -1,4 +1,4 @@
-import {json, LoaderFunctionArgs, redirect} from '@remix-run/node';
+import {json, LoaderFunctionArgs} from '@remix-run/node';
 import {prisma} from '~/.server/shared/services/prisma.service';
 import {userMapper} from '~/.server/admin/mappers/user.mapper';
 import {withZod} from '@rvf/zod';
@@ -17,8 +17,7 @@ import {
 import {containsInsensitive} from '~/.server/shared/utils/prisma.util';
 import {EUsersSortVariant} from '~/admin/components/UsersTable/UsersTableFilters';
 import {ESoftDeleteStatus} from '~/admin/constants/entries.constant';
-import { EAdminNavigation } from '~/admin/constants/navigation.constant';
-import { authenticator } from '../services/auth.service';
+import { getAuthUser } from '../services/auth.service';
 
 type UserOrderByWithRelationInput = Prisma.UserOrderByWithRelationInput;
 
@@ -31,12 +30,8 @@ export const userQueryValidator = withZod(
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function adminUsersLoader({request}: LoaderFunctionArgs) {
-  const user = await authenticator.isAuthenticated(request, {
-    failureRedirect: EAdminNavigation.authLogin,
-  });
-  if (user.role === $Enums.AdminRole.STUFF) {
-    return redirect(EAdminNavigation.dashboard);
-  }
+  await getAuthUser(request);
+
   const searchParams = requestToSearchParams(request);
   const {data} = await userQueryValidator.validate(
     searchParams

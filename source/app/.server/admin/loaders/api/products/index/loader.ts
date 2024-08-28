@@ -3,16 +3,11 @@ import {prisma} from '~/.server/shared/services/prisma.service';
 import type {SerializeFrom} from '@remix-run/server-runtime';
 import {queryToSearch, requestToSearchParams} from '~/.server/admin/utils/query.util';
 import {containsInsensitive} from '~/.server/shared/utils/prisma.util';
-import {authenticator} from '~/.server/admin/services/auth.service';
-import {EAdminNavigation} from '~/admin/constants/navigation.constant';
+import {getAuthUser} from '~/.server/admin/services/auth.service';
 import { apiProductMapper } from '~/.server/admin/mappers/api/product.mapper';
 
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function loader({request}: LoaderFunctionArgs) {
-  await authenticator.isAuthenticated(request, {
-    failureRedirect: EAdminNavigation.authLogin,
-  });
+  await getAuthUser(request);
 
   const searchParams = requestToSearchParams(request);
   const search = await queryToSearch(searchParams);

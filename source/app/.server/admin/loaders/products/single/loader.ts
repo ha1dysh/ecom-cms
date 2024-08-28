@@ -1,5 +1,5 @@
 import {json, LoaderFunctionArgs, redirect} from '@remix-run/node';
-import {authenticator} from '~/.server/admin/services/auth.service';
+import {getAuthUser} from '~/.server/admin/services/auth.service';
 import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {prisma} from '~/.server/shared/services/prisma.service';
 import {productMapper} from '~/.server/admin/mappers/product.mapper';
@@ -9,9 +9,8 @@ import { requestToSearchParams, queryToPagination, hasNextCalculate } from '~/.s
 import { ProductReviewMapper } from '~/.server/admin/mappers/productReview.mapper';
 
 export async function loader({request, params}: LoaderFunctionArgs) {
-  await authenticator.isAuthenticated(request, {
-    failureRedirect: EAdminNavigation.authLogin,
-  });
+  await getAuthUser(request);
+
   const searchParams = requestToSearchParams(request);
   const pagination = await queryToPagination(searchParams);
 
