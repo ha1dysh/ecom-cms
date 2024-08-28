@@ -8,7 +8,7 @@ import { ReviewsCard } from './ReviewsCard';
 import { IOffsetPaginationInfoDto } from '~/.server/shared/dto/offset-pagination-info.dto';
 import { TProductReviewDto } from '~/.server/admin/dto/productReview.dto';
 import { TUserDto } from '~/.server/admin/dto/user.dto';
-import { $Enums } from '@prisma/client';
+import { hasRole } from '~/admin/utils/access.util';
 
 export type SingleProps = {
   user: TUserDto;
@@ -20,14 +20,12 @@ export type SingleProps = {
 
 export const Single: FC<SingleProps> = ({user, product, categories, reviews, pagination}) => {
 
-  const hideReviewsForStuff = user.role !== $Enums.AdminRole.STUFF;
-
   return (
     <Layout>
       <Layout.Section>
         <BlockStack gap="500">
           <PrimaryInfoCard product={product} />
-          {hideReviewsForStuff && <ReviewsCard reviews={reviews} pagination={pagination} />}
+          {hasRole(user)('ADMIN') && <ReviewsCard reviews={reviews} pagination={pagination} />}
         </BlockStack>
       </Layout.Section>
 
