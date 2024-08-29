@@ -58,6 +58,11 @@ export const BaseNav: FC<Props> = ({user}) => {
             disabled: false,
             label: 'Categories',
           },
+          {
+            url: EAdminNavigation.reviews,
+            disabled: false,
+            label: 'Reviews',
+          },
         ],
       },
       {
