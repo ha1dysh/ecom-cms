@@ -1,0 +1,82 @@
+### ProductReview
+- id
+- productId*
+- customerId*
+- rate*
+- review*
+- createdAt
+- updatedAt
+- deletedAt
+
+### Cart
+- id
+- customerId
+- itemCount*
+- totalPrice*
+- totalDiscount*
+- note
+- createdAt
+- updatedAt
+
+### CartItem
+
+- id
+- cartId*
+- productId*
+- quantity*
+- createdAt
+
+### Order
+- id
+- customerId*
+- totalDiscount*
+- totalPrice*
+- email*
+- note
+- customerNote
+- phone*
+- processedAt
+- shippingAddress*
+- status (?)
+- cancelReason
+- canceledAt
+- closedAt
+- createdAt*
+- updatedAt
+
+### OrderItem
+- id
+- orderId*
+- productId*
+- productTitle
+- productPrice
+- productCompareAtPrice
+- productCostPerItem
+- productSku
+- productBarcode
+- productImage
+
+## Routes
+
+### auth
+- /admin/auth/login
+- /admin/auth/recover
+- /admin/auth/logout
+
+### orders
+- /admin/orders
+- /admin/orders/new
+- /admin/orders/:id
+- /admin/orders/:id/edit
+
+### account
+- /account/register
+- /account/login
+- /account/recover
+- /account/logout
+- /account/info
+- /account/orders
+- /account/addresses
+
+### cart
+/cart
