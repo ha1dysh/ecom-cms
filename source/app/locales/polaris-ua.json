@@ -1,0 +1,408 @@
+{
+  "Polaris": {
+    "ActionMenu": {
+      "Actions": {
+        "moreActions": "Ще більше дій"
+      },
+      "RollupActions": {
+        "rollupButton": "Переглянути дії"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Очистити",
+        "search": "Пошук",
+        "placeholder": "Пошук дій"
+      }
+    },
+    "Avatar": {
+      "label": "Аватар",
+      "labelWithInitials": "Аватар з ініціалами {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Завантаження",
+      "ellipsis": "{content}…"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Незавершено",
+        "partiallyComplete": "Частково завершено",
+        "complete": "Завершено"
+      },
+      "TONE_LABELS": {
+        "info": "Інформація",
+        "success": "Успіх",
+        "warning": "Попередження",
+        "critical": "Критичний",
+        "attention": "Увага",
+        "new": "Новий",
+        "readOnly": "Тільки для читання",
+        "enabled": "Увімкнено"
+      },
+      "progressAndTone": "{toneLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Відхилити повідомлення"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Завантаження"
+    },
+    "Common": {
+      "checkbox": "checkbox",
+      "undo": "Відмінити",
+      "cancel": "Скасувати",
+      "clear": "Очистити",
+      "close": "Закрити",
+      "submit": "Подати",
+      "more": "Більше"
+    },
+    "ContextualSaveBar": {
+      "save": "Зберегти",
+      "discard": "Відхилити"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "сортувати {direction} за",
+      "navAccessibilityLabel": "Прокрутіть таблицю {direction} один стовпчик",
+      "totalsRowHeading": "Загальні результати",
+      "totalRowHeading": "Загальний"
+    },
+    "DatePicker": {
+      "previousMonth": "Показати попередній місяць, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Показати наступний місяць, {nextMonth} {nextYear}",
+      "today": "Сьогодні ",
+      "start": "Початок діапазону",
+      "end": "Кінець діапазону",
+      "months": {
+        "january": "Січень",
+        "february": "Лютий",
+        "march": "Березень",
+        "april": "Квітень",
+        "may": "Травень",
+        "june": "Червень",
+        "july": "Липень",
+        "august": "Серпень",
+        "september": "Вересень",
+        "october": "Жовтень",
+        "november": "Листопад",
+        "december": "Грудень"
+      },
+      "days": {
+        "monday": "Понеділок",
+        "tuesday": "Вівторок",
+        "wednesday": "Середа",
+        "thursday": "Четвер",
+        "friday": "П'ятниця",
+        "saturday": "Субота",
+        "sunday": "Неділя"
+      },
+      "daysAbbreviated": {
+        "monday": "Пн",
+        "tuesday": "Вт",
+        "wednesday": "Ср",
+        "thursday": "Чт",
+        "friday": "Пт",
+        "saturday": "Сб",
+        "sunday": "Нд"
+      }
+    },
+    "DiscardConfirmationModal": {
+      "title": "Відхилити всі незбережені зміни",
+      "message": "Якщо відхилити зміни, ви не зможете відновити їх, як тому зробити видалення обраних даних.",
+      "primaryAction": "Відхилити зміни",
+      "secondaryAction": "Продовжити редагування"
+    },
+    "DropZone": {
+      "single": {
+        "overlayTextFile": "Перетягніть файл для завантаження",
+        "overlayTextImage": "Перетягніть зображення для завантаження",
+        "overlayTextVideo": "Перетягніть відео для завантаження",
+        "actionTitleFile": "Додати файл",
+        "actionTitleImage": "Додати зображення",
+        "actionTitleVideo": "Додати відео",
+        "actionHintFile": "або перетягніть файл для завантаження",
+        "actionHintImage": "або перетягніть зображення для завантаження",
+        "actionHintVideo": "або перетягніть відео для завантаження",
+        "labelFile": "Завантажити файл",
+        "labelImage": "Завантажити зображення",
+        "labelVideo": "Завантажити відео"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Перетягніть файли для завантаження",
+        "overlayTextImage": "Перетягніть зображення для завантаження",
+        "overlayTextVideo": "Перетягніть відео для завантаження",
+        "actionTitleFile": "Додати файли",
+        "actionTitleImage": "Додати зображення",
+        "actionTitleVideo": "Додати відео",
+        "actionHintFile": "або перетягніть файли для завантаження",
+        "actionHintImage": "або перетягніть зображення для завантаження",
+        "actionHintVideo": "або перетягніть відео для завантаження",
+        "labelFile": "Завантажити файли",
+        "labelImage": "Завантажити зображення",
+        "labelVideo": "Завантажити відео"
+      },
+      "errorOverlayTextFile": "Тип файлу не дійсний",
+      "errorOverlayTextImage": "Тип зображення не дійсний",
+      "errorOverlayTextVideo": "Тип відео не дійсний"
+    },
+    "EmptySearchResult": {
+      "altText": "Порожній результат пошуку"
+    },
+    "Frame": {
+      "skipToContent": "Перейти до змісту",
+      "navigationLabel": "Навігація",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Закрити навігацію"
+      }
+    },
+    "FullscreenBar": {
+      "back": "Назад",
+      "accessibilityLabel": "Вийти з повноекранного режиму"
+    },
+    "Filters": {
+      "moreFilters": "Більше фільтрів",
+      "moreFiltersWithCount": "Більше фільтрів ({count})",
+      "filter": "Фільтр {resourceName}",
+      "noFiltersApplied": "Фільтри не застосовано",
+      "cancel": "Скасувати",
+      "done": "Готово",
+      "clearAllFilters": "Очистити всі фільтри",
+      "clear": "Очистити",
+      "clearLabel": "Очистити {filterName}",
+      "addFilter": "Додати фільтр",
+      "clearFilters": "Очистити всі",
+      "searchInView": "в:{viewName}"
+    },
+    "FilterPill": {
+      "clear": "Очистити",
+      "unsavedChanges": "Незбережені зміни - {label}"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Пошук і фільтр",
+      "searchFilterTooltipWithShortcut": "Пошук і фільтр (F)",
+      "searchFilterAccessibilityLabel": "Результати пошуку",
+      "sort": "Сортувати результати",
+      "addView": "Додати новий вигляд",
+      "newView": "Створити новий вигляд",
+      "SortButton": {
+        "ariaLabel": "Сортувати результати",
+        "tooltip": "Сортувати",
+        "title": "Сортувати за",
+        "sorting": {
+          "asc": "За зростанням",
+          "desc": "За спаданням",
+          "az": "А-Я",
+          "za": "Я-А"
+        }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Редагувати стовпці таблиці",
+        "accessibilityLabel": "Налаштувати порядок стовпців таблиці і видимість"
+      },
+      "UpdateButtons": {
+        "cancel": "Скасувати",
+        "update": "Оновити",
+        "save": "Зберегти",
+        "saveAs": "Зберегти як",
+        "modal": {
+          "title": "Зберегти вигляд як",
+          "label": "Назва",
+          "sameName": "Вигляд з цим назвою вже існує. Виберіть інше назву.",
+          "save": "Зберегти",
+          "cancel": "Скасувати"
+        }
+      }
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Елемент",
+      "defaultItemPlural": "Елементи",
+      "allItemsSelected": "Всі {itemsLength}+ {resourceNamePlural} вибрано",
+      "selected": "{selectedItemsCount} вибрано",
+      "a11yCheckboxDeselectAllSingle": "Скасувати {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Вибрати {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Скасувати всі {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Вибрати всі {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Немає {resourceNamePlural}",
+      "emptySearchDescription": "Спробуйте змінити фільтри або умову",
+      "onboardingBadgeText": "Новий",
+      "resourceLoadingAccessibilityLabel": "Завантаження {resourceNamePlural}…",
+      "selectAllLabel": "Вибрати всі {resourceNamePlural}",
+      "selected": "{selectedItemsCount} вибрано",
+      "undo": "Скасувати",
+      "selectAllItems": "Вибрати всі {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "Вибрати {resourceName}",
+      "selectButtonText": "Вибрати",
+      "sortAccessibilityLabel": "сортувати {direction} за"
+    },
+    "Loading": {
+      "label": "Завантаження сторінки"
+    },
+    "Modal": {
+      "iFrameTitle": "body markup",
+      "modalWarning": "Вказані властивості не заповнені в модальному вікні: {missingProps}"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Переглянути дії для {title}",
+        "pageReadyAccessibilityLabel": "{title}. Ця сторінка готова"
+      }
+    },
+    "Pagination": {
+      "previous": "Попередній",
+      "next": "Наступний",
+      "pagination": "Пагінація"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Значення прогресу повинні бути не менше 0. Скидання {progress} на 0.",
+      "exceedWarningMessage": "Значення прогресу повинні бути не більше 100. Встановлення {progress} на 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Сортувати за",
+      "defaultItemSingular": "елемент",
+      "defaultItemPlural": "елементи",
+      "showing": "Показано {itemsCount} {resource}",
+      "showingTotalCount": "Показано {itemsCount} з {totalItemsCount} {resource}",
+      "loading": "Завантаження {resource}",
+      "selected": "{selectedItemsCount} вибрано",
+      "allItemsSelected": "Всі {itemsLength}+ {resourceNamePlural} в вашому сховищі вибрано",
+      "allFilteredItemsSelected": "Всі {itemsLength}+ {resourceNamePlural} в цьому фільтрі вибрано",
+      "selectAllItems": "Вибрати всі {itemsLength}+ {resourceNamePlural}",
+      "selectAllFilteredItems": "Вибрати всі {itemsLength}+ {resourceNamePlural} в цьому фільтрі",
+      "emptySearchResultTitle": "Немає {resourceNamePlural}",
+      "emptySearchResultDescription": "Спробуйте змінити фільтри або умову",
+      "selectButtonText": "Вибрати",
+      "a11yCheckboxDeselectAllSingle": "Скасувати {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Вибрати {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Скасувати всі {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Вибрати всі {itemsLength} {resourceNamePlural}",
+      "Item": {
+        "actionsDropdownLabel": "Дії на цей {accessibilityLabel}",
+        "actionsDropdown": "Випадаюче меню дій",
+        "viewItem": "Переглянути деталі для {itemName}"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Дії",
+        "moreActionsActivatorLabel": "Більше дій"
+      }
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Завантаження сторінки"
+    },
+    "Tabs": {
+      "newViewAccessibilityLabel": "Створити новий вигляд",
+      "newViewTooltip": "Створити вигляд",
+      "toggleTabsLabel": "Більше виглядів",
+      "Tab": {
+        "rename": "Перейменувати вигляд",
+        "duplicate": "Дублювати вигляд",
+        "edit": "Редагувати вигляд",
+        "editColumns": "Редагувати стовпці таблиці",
+        "delete": "Видалити вигляд",
+        "copy": "Скопіювати вигляд з {name}",
+        "deleteModal": {
+          "title": "Видалити в корзині?",
+          "description": "Це не можна буде скасувати. Видалений вигляд не зможе бути відновлений в адміні.",
+          "cancel": "Скасувати",
+          "delete": "Видалити вигляд"
+        }
+      },
+      "RenameModal": {
+        "title": "Перейменувати вигляд",
+        "label": "Назва",
+        "cancel": "Скасувати",
+        "create": "Зберегти",
+        "errors": {
+          "sameName": "Вигляд з цим назвою вже існує. Виберіть інше назву."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Дублювати вигляд",
+        "label": "Назва",
+        "cancel": "Скасувати",
+        "create": "Створити вигляд",
+        "errors": {
+          "sameName": "Вигляд з цим назвою вже існує. Виберіть інше назву."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Створити новий вигляд",
+        "label": "Назва",
+        "cancel": "Скасувати",
+        "create": "Створити вигляд",
+        "errors": {
+          "sameName": "Вигляд з цим назвою вже існує. Виберіть інше назву."
+        }
+      }
+    },
+    "Tag": {
+      "ariaLabel": "Видалити {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} символів",
+      "characterCountWithMaxLength": "{count} з {limit} символів використовується"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Підказка: {label}"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Перемкнути меню",
+      "SearchField": {
+        "clearButtonLabel": "Очистити",
+        "search": "Пошук"
+      }
+    },
+    "MediaCard": {
+      "dismissButton": "Відхилити",
+      "popoverButton": "Дії"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Відтворити відео",
+        "defaultWithDuration": "Відтворити відео з довжиною {duration}",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} годин",
+              "andMinutes": "{hourCount} годин і {minuteCount} хвилин",
+              "andMinute": "{hourCount} годин і {minuteCount} хвилина",
+              "minutesAndSeconds": "{hourCount} годин, {minuteCount} хвилин, і {secondCount} секунд",
+              "minutesAndSecond": "{hourCount} годин, {minuteCount} хвилин, і {secondCount} секунда",
+              "minuteAndSeconds": "{hourCount} година, {minuteCount} хвилини, і {secondCount} секунд",
+              "minuteAndSecond": "{hourCount} година, {minuteCount} хвилини, і {secondCount} секунда",
+              "andSeconds": "{hourCount} годин і {secondCount} секунд",
+              "andSecond": "{hourCount} годин і {secondCount} секунда"
+            },
+            "one": {
+              "only": "{hourCount} година",
+              "andMinutes": "{hourCount} година і {minuteCount} хвилини",
+              "andMinute": "{hourCount} година і {minuteCount} хвилину",
+              "minutesAndSeconds": "{hourCount} година, {minuteCount} хвилини, і {secondCount} секунд",
+              "minutesAndSecond": "{hourCount} година, {minuteCount} хвилини, і {secondCount} секунда",
+              "minuteAndSeconds": "{hourCount} годину, {minuteCount} хвилину, і {secondCount} секунд",
+              "minuteAndSecond": "{hourCount} годину, {minuteCount} хвилину, і {secondCount} секунда",
+              "andSeconds": "{hourCount} години і {secondCount} секунд",
+              "andSecond": "{hourCount} години і {secondCount} секунда"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} хвилин",
+              "andSeconds": "{minuteCount} хвилин і {secondCount} секунд",
+              "andSecond": "{minuteCount} хвилин і {secondCount} секунда"
+            },
+            "one": {
+              "only": "{minuteCount} хвилина",
+              "andSeconds": "{minuteCount} хвилина і {secondCount} секунд",
+              "andSecond": "{minuteCount} хвилина і {secondCount} секунда"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} секунд",
+            "one": "{secondCount} секунда"
+          }
+        }
+      }
+    }
+  }
+}
