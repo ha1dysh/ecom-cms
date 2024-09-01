@@ -6,12 +6,14 @@ import {TAdminProductsSingleLoader} from '~/.server/admin/loaders/products/singl
 import {Single} from '~/admin/components/products/Single/Single';
 import {DeleteForm} from '~/admin/components/products/Single/DeleteForm';
 import { adminLoader } from '~/.server/admin/loaders/admin.loader';
+import { useTranslation } from 'react-i18next';
 
 export {action} from '~/.server/admin/actions/products/single/action';
 
 export default function AdminProductsIdIndex() {
   const data = useRouteLoaderData<TAdminProductsSingleLoader>('routes/admin.products.$id');
   const userData = useRouteLoaderData<typeof adminLoader>('routes/admin');
+  const { t } = useTranslation('products');
 
   if (!userData?.user) {
     return null;
@@ -23,7 +25,7 @@ export default function AdminProductsIdIndex() {
 
   const deleteAction = useMemo(() => (
     {
-      content: 'Delete product',
+      content: t('single.deleteButton'),
       destructive: true,
       onAction: toggleActive,
     }
@@ -56,7 +58,7 @@ export default function AdminProductsIdIndex() {
         size="small"
         open={active}
         onClose={toggleActive}
-        title="Delete product"
+        title={t('delete.title')}
       >
         <DeleteForm toggleActive={toggleActive} product={data?.product} />
       </Modal>

@@ -3,18 +3,21 @@ import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {EditIcon} from '@shopify/polaris-icons';
 import React, {FC} from 'react';
 import {TProductDto} from '~/.server/admin/dto/product.dto';
+import { useTranslation } from 'react-i18next';
 
 export type PrimaryInfoCardProps = {
   product: TProductDto;
 }
 
 export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
+  const { t } = useTranslation('products');
+
   return (
     <Card>
       <BlockStack gap="200">
         <InlineGrid columns="1fr auto">
           <Text as="h2" variant="headingSm">
-            Primary info
+            {t('single.primaryInfo')}
           </Text>
           <Button
             url={`${EAdminNavigation.products}/${product.id}/edit-primary`}
@@ -24,7 +27,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
         </InlineGrid>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Slug
+            {t('single.slug')}
           </Text>
           <Text as="p" variant="bodyMd">
             {product.slug}
@@ -32,7 +35,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Title
+            {t('single.productTitle')}
           </Text>
           <Text as="p" variant="bodyMd">
             {product.title}
@@ -40,7 +43,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Description
+            {t('single.description')}
           </Text>
           <Text as="p" variant="bodyMd">
             {product.description}
@@ -48,7 +51,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Total reviews
+            {t('single.totalReviews')}
           </Text>
           <Text as="p" variant="bodyMd">
             {product.totalReviews}
@@ -56,7 +59,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Average rating
+            {t('single.avgRate')}
           </Text>
           <Text as="p" variant="bodyMd">
             {product.avgRate}
@@ -64,7 +67,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            SKU
+            {t('single.sku')}
           </Text>
           <Text as="p" variant="bodyMd">
             {product.sku}
@@ -72,7 +75,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Barcode
+            {t('single.barcode')}
           </Text>
           <Text as="p" variant="bodyMd">
             {product.barcode}
@@ -80,7 +83,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Quantity
+            {t('single.quantity')}
           </Text>
           <Text as="p" variant="bodyMd">
             {product.quantity}
@@ -88,7 +91,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Price
+            {t('single.price')}
           </Text>
           <Text as="p" variant="bodyMd">
             {product.price}
@@ -96,7 +99,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Compare at price
+            {t('single.compareAtPrice')}
           </Text>
           <Text as="p" variant="bodyMd">
             {product.compareAtPrice}
@@ -104,7 +107,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Cost per item
+            {t('single.costPerItem')}
           </Text>
           <Text as="p" variant="bodyMd">
             {product.costPerItem}

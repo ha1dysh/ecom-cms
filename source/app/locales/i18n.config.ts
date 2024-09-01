@@ -1,10 +1,12 @@
 import enCommon from "~/locales/en/common";
 import enUsers from "./en/users";
 import enCustomers from "./en/customers";
+import enProducts from "./en/products";
 
 import uaCommon from "~/locales/ua/common";
 import uaUsers from "./ua/users";
 import uaCustomers from "./ua/customers";
+import uaProducts from "./ua/products";
 
 // This is the list of languages your application supports
 export const supportedLngs = ["ua", "en"];
@@ -18,6 +20,16 @@ export const fallbackLng = "en";
 export const defaultNS = "translation";
 
 export const resources = {
-  en: { translation: enCommon, users: enUsers, customers: enCustomers },
-  ua: { translation: uaCommon, users: uaUsers, customers: uaCustomers },
+  en: {
+    translation: enCommon,
+    users: enUsers,
+    customers: enCustomers,
+    products: enProducts,
+  },
+  ua: {
+    translation: uaCommon,
+    users: uaUsers,
+    customers: uaCustomers,
+    products: uaProducts,
+  },
 };

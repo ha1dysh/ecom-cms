@@ -12,6 +12,7 @@ import {
   TAdminApiCategoriesLoader,
   TAdminApiCategoriesLoaderData
 } from '~/.server/admin/loaders/api/categories/index/loader';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   category?: Pick<TCategoryDto, 'id' | 'title' | 'slug'> | null;
@@ -28,6 +29,7 @@ const responseToOptions = (data?: TAdminApiCategoriesLoaderData) => {
 
 export const CategoryForm: FC<Props> = (props) => {
   const {category, toggleActive} = props;
+  const { t } = useTranslation('products');
 
   const defaultValue = category ? {
     label: `${category.title} (${category.slug})`,
@@ -43,7 +45,7 @@ export const CategoryForm: FC<Props> = (props) => {
       <Box padding="400" paddingBlockStart="200">
         <FormLayout>
           <ValidatedLazyAutocomplete<TAdminApiCategoriesLoader>
-            label="Category"
+            label={t('category.selectCategory')}
             name="categoryId"
             url={EAdminNavigation.apiCategories}
             responseToOptions={responseToOptions}
@@ -54,8 +56,8 @@ export const CategoryForm: FC<Props> = (props) => {
       <Divider/>
       <Box padding="400">
         <InlineStack direction="row-reverse" align="end" gap="200">
-          <ValidatedSubmitButton text={'Save'} variant="primary"/>
-          <Button onClick={toggleActive}>Cancel</Button>
+          <ValidatedSubmitButton text={t('category.saveButton')} variant="primary"/>
+          <Button onClick={toggleActive}>{t('category.cancelButton')}</Button>
         </InlineStack>
       </Box>
     </ValidatedForm>

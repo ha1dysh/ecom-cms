@@ -4,6 +4,7 @@ import {useSearchParams} from '@remix-run/react';
 import type {TAdminProductsLoaderData} from '~/.server/admin/loaders/products/index/loader';
 import {reqSortToSort, sortArrToReqSort} from '~/admin/utils/filter.util';
 import {ESoftDeleteStatus} from '~/admin/constants/entries.constant';
+import { useTranslation } from 'react-i18next';
 
 export enum EProductsSortVariant {
   totalReviews_asc = 'totalReviews_asc',
@@ -27,81 +28,81 @@ export interface FiltersProps {
 }
 
 export const Filters: FC<FiltersProps> = ({query}) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
+  const { t } = useTranslation('products');
 
 
   /* SORT START */
   const sortOptions: IndexFiltersProps['sortOptions'] = [
     {
-      label: 'Total reviews',
+      label: t('filters.totalReviews'),
       value: reqSortToSort(EProductsSortVariant.totalReviews_asc),
-      directionLabel: 'Low to high'
+      directionLabel: t('filters.lowToHigh')
     },
     {
-      label: 'Total reviews',
+      label: t('filters.totalReviews'),
       value: reqSortToSort(EProductsSortVariant.totalReviews_desc),
-      directionLabel: 'High to low'
+      directionLabel: t('filters.highToLow')
     },
     {
-      label: 'Average rating',
+      label: t('filters.avgRate'),
       value: reqSortToSort(EProductsSortVariant.avgRate_asc),
-      directionLabel: 'Low to high'
+      directionLabel: t('filters.lowToHigh')
     },
     {
-      label: 'Average rating',
+      label: t('filters.avgRate'),
       value: reqSortToSort(EProductsSortVariant.avgRate_desc),
-      directionLabel: 'High to low'
+      directionLabel: t('filters.highToLow')
     },
     {
-      label: 'Title',
+      label: t('filters.title'),
       value: reqSortToSort(EProductsSortVariant.title_asc),
-      directionLabel: 'A-Z'
+      directionLabel: t('filters.az')
     },
     {
-      label: 'Title',
+      label: t('filters.title'),
       value: reqSortToSort(EProductsSortVariant.title_desc),
-      directionLabel: 'Z-A'
+      directionLabel: t('filters.za')
     },
     {
-      label: 'Quantity',
+      label: t('filters.quantity'),
       value: reqSortToSort(EProductsSortVariant.quantity_asc),
-      directionLabel: 'Low to high'
+      directionLabel: t('filters.lowToHigh')
     },
     {
-      label: 'Quantity',
+      label: t('filters.quantity'),
       value: reqSortToSort(EProductsSortVariant.quantity_desc),
-      directionLabel: 'High to low'
+      directionLabel: t('filters.highToLow')
     },
     {
-      label: 'Status',
+      label: t('filters.status'),
       value: reqSortToSort(EProductsSortVariant.softDeleteStatus_asc),
-      directionLabel: 'A-Z'
+      directionLabel: t('filters.az')
     },
     {
-      label: 'Status',
+      label: t('filters.status'),
       value: reqSortToSort(EProductsSortVariant.softDeleteStatus_desc),
-      directionLabel: 'Z-A'
+      directionLabel: t('filters.za')
     },
     {
-      label: 'Created',
+      label: t('filters.createdAt'),
       value: reqSortToSort(EProductsSortVariant.createdAt_asc),
-      directionLabel: 'Oldest to newest'
+      directionLabel: t('filters.oldestToNewest')
     },
     {
-      label: 'Created',
+      label: t('filters.createdAt'),
       value: reqSortToSort(EProductsSortVariant.createdAt_desc),
-      directionLabel: 'Newest to oldest'
+      directionLabel: t('filters.newestToOldest')
     },
     {
-      label: 'Updated',
+      label: t('filters.updatedAt'),
       value: reqSortToSort(EProductsSortVariant.updatedAt_asc),
-      directionLabel: 'Oldest to newest'
+      directionLabel: t('filters.oldestToNewest')
     },
     {
-      label: 'Updated',
+      label: t('filters.updatedAt'),
       value: reqSortToSort(EProductsSortVariant.updatedAt_desc),
-      directionLabel: 'Newest to oldest'
+      directionLabel: t('filters.newestToOldest')
     },
   ];
 
@@ -188,18 +189,18 @@ export const Filters: FC<FiltersProps> = ({query}) => {
   const filters = [
     {
       key: 'softDeleteStatus',
-      label: 'Account Status',
+      label: t('filters.productStatus'),
       filter: (
         <ChoiceList
           title="Role"
           titleHidden
           choices={[
             {
-              label: 'Active',
+              label: t('filters.active'),
               value: ESoftDeleteStatus.active,
             },
             {
-              label: 'Deleted',
+              label: t('filters.inactive'),
               value: ESoftDeleteStatus.deleted,
             }
           ]}
@@ -228,7 +229,7 @@ export const Filters: FC<FiltersProps> = ({query}) => {
       sortOptions={sortOptions}
       sortSelected={sortSelected}
       queryValue={queryValue}
-      queryPlaceholder="Search products"
+      queryPlaceholder={t('filters.searchProducts')}
       onQueryChange={handleFiltersQueryChange}
       onQueryClear={() => handleFiltersQueryChange('')}
       onSort={setSortSelected}
