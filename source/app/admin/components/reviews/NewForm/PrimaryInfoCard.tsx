@@ -7,6 +7,7 @@ import { TAdminApiProductsLoader, TAdminApiProductsLoaderData } from '~/.server/
 import { ValidatedLazyAutocomplete } from '~/admin/ui/ValidatedLazyAutocomplete/ValidatedLazyAutocomplete';
 import { EAdminNavigation } from '~/admin/constants/navigation.constant';
 import { TAdminApiCustomersLoader, TAdminApiCustomersLoaderData } from '~/.server/admin/loaders/api/customers/index/loader';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   productReview?: TProductReviewDto
@@ -27,6 +28,8 @@ const customersResponseToOptions = (data?: TAdminApiCustomersLoaderData) => {
 };
 
 export const PrimaryInfoCard: FC<Props> = ({ productReview }) => {
+  const { t } = useTranslation('reviews');
+
   const productDefaultValue = productReview?.product ? {
     label: `${productReview?.product.title} (${productReview?.product.slug})`,
     value: productReview?.product.id,
@@ -41,17 +44,17 @@ export const PrimaryInfoCard: FC<Props> = ({ productReview }) => {
     <Card>
       <BlockStack gap="200">
         <Text as="h2" variant="headingSm">
-          Primary info
+          {t('new.primaryInfo')}
         </Text>
         <FormLayout>
           <ValidatedSelect
-            label="Rate"
+            label={t('new.rate')}
             name="rate"
             options={["0", "1", "2", "3", "4", "5"]}
             defaultValue={String(productReview?.rate)}
           />
           <ValidatedTextField
-            label="Review"
+            label={t('new.review')}
             type="text"
             name="review"
             autoComplete="off"
@@ -60,7 +63,7 @@ export const PrimaryInfoCard: FC<Props> = ({ productReview }) => {
           />
            <ValidatedLazyAutocomplete<TAdminApiProductsLoader>
             key='product'
-            label="Products"
+            label={t('new.product')}
             name="productId"
             url={EAdminNavigation.apiProducts}
             responseToOptions={productsResponseToOptions}
@@ -68,7 +71,7 @@ export const PrimaryInfoCard: FC<Props> = ({ productReview }) => {
           />
            <ValidatedLazyAutocomplete<TAdminApiCustomersLoader>
             key='customer'
-            label="Customers"
+            label={t('new.customer')}
             name="customerId"
             url={EAdminNavigation.apiCustomers}
             responseToOptions={customersResponseToOptions}

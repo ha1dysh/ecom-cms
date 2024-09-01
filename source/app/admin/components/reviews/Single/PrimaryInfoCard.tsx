@@ -3,18 +3,21 @@ import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {EditIcon} from '@shopify/polaris-icons';
 import React, {FC} from 'react';
 import { TProductReviewDto } from '~/.server/admin/dto/productReview.dto';
+import { useTranslation } from 'react-i18next';
 
 export type PrimaryInfoCardProps = {
   productReview: TProductReviewDto;
 }
 
 export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({ productReview }) => {
+  const { t } = useTranslation('reviews');
+
   return (
     <Card>
       <BlockStack gap="200">
         <InlineGrid columns="1fr auto">
           <Text as="h2" variant="headingSm">
-            Primary info
+            {t('single.primaryInfo')}
           </Text>
           <Button
             url={`${EAdminNavigation.reviews}/${productReview.id}/edit-primary`}
@@ -24,7 +27,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({ productReview }) => 
         </InlineGrid>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Rate
+            {t('single.rate')}
           </Text>
           <Text as="p" variant="bodyMd">
             {productReview.rate}
@@ -32,7 +35,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({ productReview }) => 
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Review
+            {t('single.review')}
           </Text>
           <Text as="p" variant="bodyMd">
             {productReview.review}
@@ -40,7 +43,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({ productReview }) => 
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Product title
+            {t('single.product')}
           </Text>
           <Text as="p" variant="bodyMd">
             <Link
@@ -52,7 +55,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({ productReview }) => 
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Customer full name
+            {t('single.customer')}
           </Text>
           <Text as="p" variant="bodyMd">
             <Link

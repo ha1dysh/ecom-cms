@@ -8,6 +8,7 @@ import {usePagination} from '~/admin/hooks/usePagination';
 import {Filters} from './Filters';
 import { TProductReviewDto } from '~/.server/admin/dto/productReview.dto';
 import { TAdminProductReviewsLoaderData } from '~/.server/admin/loaders/reviews/index/loader';
+import { useTranslation } from 'react-i18next';
 
 export interface ListProps {
   productReviews: TProductReviewDto[];
@@ -17,6 +18,8 @@ export interface ListProps {
 
 export const Index: FC<ListProps> = ({productReviews, query, pagination}) => {
   const paginationProps = usePagination(pagination);
+  const { t } = useTranslation('reviews');
+
   const resourceName = useMemo(() => ({
     singular: 'review',
     plural: 'reviews',
@@ -24,13 +27,13 @@ export const Index: FC<ListProps> = ({productReviews, query, pagination}) => {
 
   const headings: NonEmptyArray<IndexTableHeading> = useMemo(() => ([
     {title: 'ID'},
-    {title: 'Customer'},
-    {title: 'Product'},
-    {title: 'Rate'},
-    {title: 'Review'},
-    {title: 'Created at'},
-    {title: 'Updated at'},
-    {title: 'Deleted at'},
+    {title: t('table.customer')},
+    {title: t('table.product')},
+    {title: t('table.rate')},
+    {title: t('table.review')},
+    {title: t('table.createdAt')},
+    {title: t('table.updatedAt')},
+    {title: t('table.deleteAt')},
   ]), []);
 
   const rowMarkup = productReviews.map(

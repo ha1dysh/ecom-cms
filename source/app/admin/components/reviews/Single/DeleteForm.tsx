@@ -4,6 +4,7 @@ import {ValidatedForm} from 'remix-validated-form';
 import {ValidatedSubmitButton} from '~/admin/ui/ValidatedSubmitButton/ValidatedSubmitButton';
 import {deleteFormValidator} from '~/admin/components/reviews/Single/DeleteForm.validator';
 import { TProductReviewDto } from '~/.server/admin/dto/productReview.dto';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   productReview: Pick<TProductReviewDto, 'review'>;
@@ -13,6 +14,7 @@ type Props = {
 export const DeleteForm: FC<Props> = (props) => {
   const {productReview, toggleActive} = props;
   const {review} = productReview;
+  const { t } = useTranslation('reviews');
 
   return (
     <ValidatedForm
@@ -22,7 +24,7 @@ export const DeleteForm: FC<Props> = (props) => {
     >
       <Box padding="400" paddingBlockStart="200">
         <Text as="p">
-          Are you sure you want to delete review:
+          {t('delete.paragraph')}
           <br />
           <Text as="strong">{review}</Text>
         </Text>
@@ -31,11 +33,11 @@ export const DeleteForm: FC<Props> = (props) => {
       <Box padding="400">
         <InlineStack direction="row-reverse" align="end" gap="200">
           <ValidatedSubmitButton
-            text={"Delete"}
+            text={t('delete.deleteButton')}
             variant="primary"
             tone="critical"
           />
-          <Button onClick={toggleActive}>Cancel</Button>
+          <Button onClick={toggleActive}>{t('delete.cancelButton')}</Button>
         </InlineStack>
       </Box>
     </ValidatedForm>

@@ -3,12 +3,14 @@ import enUsers from "./en/users";
 import enCustomers from "./en/customers";
 import enProducts from "./en/products";
 import enCategories from "./en/categories";
+import enReviews from "./en/reviews";
 
 import uaCommon from "~/locales/ua/common";
 import uaUsers from "./ua/users";
 import uaCustomers from "./ua/customers";
 import uaProducts from "./ua/products";
 import uaCategories from "./ua/categories";
+import uaReviews from "./ua/reviews";
 
 // This is the list of languages your application supports
 export const supportedLngs = ["ua", "en"];
@@ -28,6 +30,7 @@ export const resources = {
     customers: enCustomers,
     products: enProducts,
     categories: enCategories,
+    reviews: enReviews,
   },
   ua: {
     translation: uaCommon,
@@ -35,5 +38,6 @@ export const resources = {
     customers: uaCustomers,
     products: uaProducts,
     categories: uaCategories,
+    reviews: uaReviews,
   },
 };

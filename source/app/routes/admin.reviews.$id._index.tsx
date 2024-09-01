@@ -5,18 +5,20 @@ import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {Single} from '~/admin/components/reviews/Single/Single';
 import {DeleteForm} from '~/admin/components/reviews/Single/DeleteForm';
 import { TAdminReviewsSingleLoader } from '~/.server/admin/loaders/reviews/single/loader';
+import { useTranslation } from 'react-i18next';
 
 export {action} from '~/.server/admin/actions/reviews/single/action';
 
 export default function AdminReviewsIdIndex() {
   const data = useRouteLoaderData<TAdminReviewsSingleLoader>('routes/admin.reviews.$id');
   const [active, setActive] = useState(false);
+  const { t } = useTranslation('reviews');
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
 
   const deleteAction = useMemo(() => (
     {
-      content: 'Delete Review',
+      content: t('single.deleteButton'),
       destructive: true,
       onAction: toggleActive,
     }
@@ -32,7 +34,7 @@ export default function AdminReviewsIdIndex() {
 
   return (
     <Page
-      title={`Review id #${data?.productReview.id}`}
+      title={`${t('single.title')} #${data?.productReview.id}`}
       backAction={{
         url: EAdminNavigation.reviews
       }}
@@ -43,7 +45,7 @@ export default function AdminReviewsIdIndex() {
         size="small"
         open={active}
         onClose={toggleActive}
-        title="Delete review"
+        title={t('delete.title')}
       >
         <DeleteForm toggleActive={toggleActive} productReview={data?.productReview}/>
       </Modal>
