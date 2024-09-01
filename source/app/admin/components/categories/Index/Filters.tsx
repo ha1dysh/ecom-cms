@@ -4,6 +4,7 @@ import {useSearchParams} from '@remix-run/react';
 import type {TAdminCategoriesLoaderData} from '~/.server/admin/loaders/categories/index/loader';
 import {reqSortToSort, sortArrToReqSort} from '~/admin/utils/filter.util';
 import {ESoftDeleteStatus} from '~/admin/constants/entries.constant';
+import { useTranslation } from 'react-i18next';
 
 export enum ECategoriesSortVariant {
   createdAt_asc = 'createdAt_asc',
@@ -21,15 +22,16 @@ export interface FiltersProps {
 export const Filters: FC<FiltersProps> = ({query}) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
+  const { t } = useTranslation('categories');
 
   /* SORT START */
   const sortOptions: IndexFiltersProps['sortOptions'] = [
-    {label: 'Created', value: reqSortToSort(ECategoriesSortVariant.createdAt_asc), directionLabel: 'Oldest to newest'},
-    {label: 'Created', value: reqSortToSort(ECategoriesSortVariant.createdAt_desc), directionLabel: 'Newest to oldest'},
-    {label: 'Updated', value: reqSortToSort(ECategoriesSortVariant.updatedAt_asc), directionLabel: 'Oldest to newest'},
-    {label: 'Updated', value: reqSortToSort(ECategoriesSortVariant.updatedAt_desc), directionLabel: 'Newest to oldest'},
-    {label: 'Deleted', value: reqSortToSort(ECategoriesSortVariant.deletedAt_asc), directionLabel: 'Oldest to newest'},
-    {label: 'Deleted', value: reqSortToSort(ECategoriesSortVariant.deletedAt_desc), directionLabel: 'Newest to oldest'},
+    {label: t('filters.createdAt'), value: reqSortToSort(ECategoriesSortVariant.createdAt_asc), directionLabel: t('filters.oldToNew')},
+    {label: t('filters.createdAt'), value: reqSortToSort(ECategoriesSortVariant.createdAt_desc), directionLabel: t('filters.newToOld')},
+    {label: t('filters.updatedAt'), value: reqSortToSort(ECategoriesSortVariant.updatedAt_asc), directionLabel: t('filters.oldToNew')},
+    {label: t('filters.updatedAt'), value: reqSortToSort(ECategoriesSortVariant.updatedAt_desc), directionLabel: t('filters.newToOld')},
+    {label: t('filters.deleteAt'), value: reqSortToSort(ECategoriesSortVariant.deletedAt_asc), directionLabel: t('filters.oldToNew')},
+    {label: t('filters.deleteAt'), value: reqSortToSort(ECategoriesSortVariant.deletedAt_desc), directionLabel: t('filters.newToOld')},
   ];
 
   const sortOrder = query?.sort || ECategoriesSortVariant.createdAt_desc;
@@ -115,18 +117,18 @@ export const Filters: FC<FiltersProps> = ({query}) => {
   const filters = [
     {
       key: 'softDeleteStatus',
-      label: 'Soft Delete Status',
+      label: t('filters.softDeleteStatus'),
       filter: (
         <ChoiceList
           title="Role"
           titleHidden
           choices={[
             {
-              label: 'Active',
+              label: t('filters.active'),
               value: ESoftDeleteStatus.active,
             },
             {
-              label: 'Deleted',
+              label: t('filters.inactive'),
               value: ESoftDeleteStatus.deleted,
             }
           ]}
@@ -155,7 +157,7 @@ export const Filters: FC<FiltersProps> = ({query}) => {
       sortOptions={sortOptions}
       sortSelected={sortSelected}
       queryValue={queryValue}
-      queryPlaceholder="Search categories"
+      queryPlaceholder={t('filters.searchCategories')}
       onQueryChange={handleFiltersQueryChange}
       onQueryClear={() => handleFiltersQueryChange('')}
       onSort={setSortSelected}

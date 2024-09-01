@@ -7,14 +7,16 @@ import {useRouteLoaderData} from '@remix-run/react';
 import {TAdminCategoriesSingleLoader} from '~/.server/admin/loaders/categories/single/loader';
 import {EditPrimaryForm} from '~/admin/components/categories/EditPrimaryForm/EditPrimaryForm';
 import {editPrimaryFormValidator} from '~/admin/components/categories/EditPrimaryForm/EditPrimaryForm.validator';
+import { useTranslation } from 'react-i18next';
 
 export {action} from '~/.server/admin/actions/categories/edit-primary/action';
 
 export default function AdminCategoriesIdEditPrimary() {
   const data = useRouteLoaderData<TAdminCategoriesSingleLoader>('routes/admin.categories.$id');
+  const { t } = useTranslation('categories');
 
   const primaryAction = useCallback(() => (
-    <ValidatedSubmitButton text="save" variant="primary"/>
+    <ValidatedSubmitButton text={t('edit.saveButton')} variant="primary"/>
   ), []);
 
   if (!data?.category) {
@@ -24,7 +26,7 @@ export default function AdminCategoriesIdEditPrimary() {
   return (
     <ValidatedForm validator={editPrimaryFormValidator} method="post">
       <Page
-        title="Edit category primary info"
+        title={t('edit.title')}
         backAction={{
           url: `${EAdminNavigation.categories}/${data.category.id}`,
         }}

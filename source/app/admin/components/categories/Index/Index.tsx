@@ -8,6 +8,7 @@ import {usePagination} from '~/admin/hooks/usePagination';
 import {TCategoryDto} from '~/.server/admin/dto/category.dto';
 import type {TAdminCategoriesLoaderData} from '~/.server/admin/loaders/categories/index/loader';
 import {Filters} from './Filters';
+import { useTranslation } from 'react-i18next';
 
 export interface ListProps {
   categories: TCategoryDto[];
@@ -18,22 +19,25 @@ export interface ListProps {
 
 export const Index: FC<ListProps> = ({categories, query, pagination}) => {
   const paginationProps = usePagination(pagination);
+  const { t } = useTranslation('categories');
+
   const resourceName = useMemo(() => ({
     singular: 'category',
     plural: 'categories',
   }), []);
 
   const headings: NonEmptyArray<IndexTableHeading> = useMemo(() => ([
-    {title: 'Category Name'},
-    {title: 'Email'},
-    {title: 'Created at'},
-    {title: 'Updated at'},
-    {title: 'Deleted at'},
+    {title: t('table.title')},
+    {title: t('table.slug')},
+    {title: t('table.description')},
+    {title: t('table.createdAt')},
+    {title: t('table.updatedAt')},
+    {title: t('table.deleteAt')},
   ]), []);
 
   const rowMarkup = categories.map(
     (
-      {id, title, description, createdAt, updatedAt, deletedAt},
+      {id, title, slug, description, createdAt, updatedAt, deletedAt},
       index,
     ) => (
       <IndexTable.Row
@@ -44,6 +48,7 @@ export const Index: FC<ListProps> = ({categories, query, pagination}) => {
         <IndexTable.Cell>
           <Link url={`${EAdminNavigation.categories}/${id}`}>{title}</Link>
         </IndexTable.Cell>
+        <IndexTable.Cell>{slug}</IndexTable.Cell>
         <IndexTable.Cell>{description}</IndexTable.Cell>
         <IndexTable.Cell>{createdAt}</IndexTable.Cell>
         <IndexTable.Cell>{updatedAt}</IndexTable.Cell>

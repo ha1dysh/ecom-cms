@@ -5,18 +5,20 @@ import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {TAdminCategoriesSingleLoader} from '~/.server/admin/loaders/categories/single/loader';
 import {Single} from '~/admin/components/categories/Single/Single';
 import {DeleteForm} from '~/admin/components/categories/Single/DeleteForm';
+import { useTranslation } from 'react-i18next';
 
 export {action} from '~/.server/admin/actions/categories/single/action';
 
 export default function AdminCategoriesIdIndex() {
   const data = useRouteLoaderData<TAdminCategoriesSingleLoader>('routes/admin.categories.$id');
   const [active, setActive] = useState(false);
+  const { t } = useTranslation('categories');
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
 
   const deleteAction = useMemo(() => (
     {
-      content: 'Delete category',
+      content: t('single.deleteButton'),
       destructive: true,
       onAction: toggleActive,
     }
@@ -43,7 +45,7 @@ export default function AdminCategoriesIdIndex() {
         size="small"
         open={active}
         onClose={toggleActive}
-        title="Delete category"
+        title={t('delete.title')}
       >
         <DeleteForm toggleActive={toggleActive} category={data?.category}/>
       </Modal>
