@@ -27,10 +27,6 @@ export default {
     editButton: 'Редагувати',
     contactInformation: 'Контактна інформація',
     address: 'Адреса',
-    reviews: 'Відгуки',
-    reviewsHeading: 'Немає відгуків',
-    reviewsParagraph: 'Ви можете використовувати розділ Відгуки, щоб створити, редагувати та видаляти відгуки.',
-    reviewsCreateButton: 'Створити відгук',
   },
 
   new: {

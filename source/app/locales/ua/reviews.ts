@@ -64,4 +64,13 @@ export default {
     deleteButton: "Видалити",
     cancelButton: "Скасувати",
   },
+
+  card: {
+    title: "Відгуки",
+    rate: "Рейтинг",
+    review: "Відгук",
+    emptyHeading: "Немає відгуків",
+    emptyParagraph: "Ви можете використовувати розділ Відгуки, щоб створити, редагувати та видаляти відгуки.",
+    createButton: "Створити відгук",
+  }
 }

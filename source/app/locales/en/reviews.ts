@@ -64,4 +64,13 @@ export default {
     deleteButton: "Delete",
     cancelButton: "Cancel",
   },
+
+  card: {
+    title: "Reviews",
+    rate: "Rate",
+    review: "Review",
+    emptyHeading: "There are no reviews yet",
+    emptyParagraph: "You can use the Reviews section to create, edit, and delete reviews.",
+    createButton: "Create Review",
+  }
 };

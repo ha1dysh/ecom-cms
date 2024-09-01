@@ -3,7 +3,7 @@ import React, {FC} from 'react';
 import {PrimaryInfoCard} from './PrimaryInfoCard';
 import {TCustomerDto} from '~/.server/admin/dto/customer.dto';
 import {AddressesCard} from '~/admin/components/customers/Single/AddressesCard';
-import { ReviewsCard } from '../../products/Single/ReviewsCard';
+import { ReviewsCard } from '../../reviews/ReviewsCard';
 import { IOffsetPaginationInfoDto } from '~/.server/shared/dto/offset-pagination-info.dto';
 import { TProductReviewDto } from '~/.server/admin/dto/productReview.dto';
 

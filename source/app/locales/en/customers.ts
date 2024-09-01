@@ -29,10 +29,6 @@ export default {
     editButton: 'Edit',
     contactInformation: 'Contact information',
     address: 'Address',
-    reviews: 'Reviews',
-    reviewsHeading: 'There are no reviews yet',
-    reviewsParagraph: 'You can use the Reviews section to create, edit, and delete reviews.',
-    reviewsCreateButton: 'Create Review',
   },
 
   new: {

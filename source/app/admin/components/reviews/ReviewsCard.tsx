@@ -1,11 +1,9 @@
 import {Avatar, BlockStack, Card, EmptyState, InlineGrid, ResourceItem, ResourceList, Text} from '@shopify/polaris';
 import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {FC} from 'react';
-import {TProductDto} from '~/.server/admin/dto/product.dto';
 import { IOffsetPaginationInfoDto } from '~/.server/shared/dto/offset-pagination-info.dto';
 import { usePagination } from '~/admin/hooks/usePagination';
 import { TProductReviewDto } from '~/.server/admin/dto/productReview.dto';
-import { redirect } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 
 export type PrimaryInfoCardProps = {
@@ -14,14 +12,14 @@ export type PrimaryInfoCardProps = {
 }
 
 export const ReviewsCard: FC<PrimaryInfoCardProps> = ({ reviews, pagination }) => {
-  const { t } = useTranslation('customers');
+  const { t } = useTranslation('reviews');
 
   return (
     <Card>
       <BlockStack gap="200">
         <InlineGrid columns="1fr auto">
           <Text as="h2" variant="headingSm">
-            {t('single.reviews')}
+            {t('card.title')}
           </Text>
         </InlineGrid>
         <BlockStack gap="200">
@@ -40,18 +38,18 @@ function ReviewsList({
   pagination: IOffsetPaginationInfoDto;
 }) {
   const paginationProps = usePagination(pagination);
-  const { t } = useTranslation('customers');
+  const { t } = useTranslation('reviews');
 
   const emptyStateMarkup = !reviews.length ? (
     <EmptyState
-      heading={t('single.reviewsHeading')}
+      heading={t('card.emptyHeading')}
       action={{
-        content: t('single.reviewsCreateButton'),
+        content: t('card.createButton'),
         url: EAdminNavigation.reviewsCreate,
       }}
       image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
     >
-      <p>{t('single.reviewsParagraph')}</p>
+      <p>{t('card.emptyParagraph')}</p>
     </EmptyState>
   ) : undefined;
 
@@ -71,9 +69,9 @@ function ReviewsList({
             accessibilityLabel={`View details for ${id}`}
           >
             <Text variant="bodyMd" fontWeight="bold" as="h3">
-              Rate: {rate}
+              {t('card.rate')}: {rate}
             </Text>
-            <div>Review: {review}</div>
+            <div>{t('card.review')}: {review}</div>
           </ResourceItem>
         );
       }}
