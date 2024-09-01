@@ -12,6 +12,8 @@ export default {
     searchUsers: "Search users",
     roleFilter: "Role",
     softDeleteStatusFilter: "Soft delete status",
+    active: "Active",
+    inactive: "Inactive",
     clear: "Clear",
     sortBy: "Sort by",
     oldestToNewest: "Oldest to newest",
@@ -49,6 +51,13 @@ export default {
     selectRole: "Select role",
     adminRole: "Admin",
     staffRole: "Staff",
+  },
+
+  delete: {
+    title: "Delete user",
+    paragraph: "Are you sure you want to delete",
+    deleteButton: "Delete",
+    cancelButton: "Cancel",
   },
 
   edit: {

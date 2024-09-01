@@ -52,7 +52,7 @@ export default function AdminUsersSingle() {
         size="small"
         open={active}
         onClose={toggleActive}
-        title="Delete user"
+        title={t('delete.title')}
       >
         <UsersDeleteForm toggleActive={toggleActive} fullName={user.fullName}/>
       </Modal>

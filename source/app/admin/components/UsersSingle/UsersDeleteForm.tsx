@@ -6,6 +6,7 @@ import {ValidatedAction} from '~/admin/ui/ValidatedAction/ValidatedAction';
 import {EAdminUserAction} from '~/admin/constants/action.constant';
 import {TUserDto} from '~/.server/admin/dto/user.dto';
 import {usersDeleteFormValidator} from '~/admin/components/UsersSingle/UsersDeleteForm.validator';
+import { useTranslation } from 'react-i18next';
 
 export type UsersDeleteFormProps = {
   fullName: TUserDto['fullName'];
@@ -14,6 +15,7 @@ export type UsersDeleteFormProps = {
 
 export const UsersDeleteForm: FC<UsersDeleteFormProps> = (props) => {
   const {fullName, toggleActive} = props;
+  const { t } = useTranslation('users');
 
   return (
     <ValidatedForm validator={usersDeleteFormValidator} method="post" onSubmit={toggleActive}>
@@ -23,14 +25,14 @@ export const UsersDeleteForm: FC<UsersDeleteFormProps> = (props) => {
 
       <Box padding="400" paddingBlockStart="200">
         <Text as="p">
-          Are you sure you want to delete {fullName}?
+          {t('delete.paragraph')} {fullName}?
         </Text>
       </Box>
       <Divider/>
       <Box padding="400">
         <InlineStack direction="row-reverse" align="end" gap="200">
-          <ValidatedSubmitButton text={'Delete'} variant="primary" tone="critical"/>
-          <Button onClick={toggleActive}>Cancel</Button>
+          <ValidatedSubmitButton text={t('delete.deleteButton')} variant="primary" tone="critical"/>
+          <Button onClick={toggleActive}>{t('delete.cancelButton')}</Button>
         </InlineStack>
       </Box>
     </ValidatedForm>

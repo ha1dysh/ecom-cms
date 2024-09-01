@@ -4,6 +4,7 @@ import {useSearchParams} from '@remix-run/react';
 import type {TAdminCustomersLoaderData} from '~/.server/admin/loaders/customers/index/loader';
 import {reqSortToSort, sortArrToReqSort} from '~/admin/utils/filter.util';
 import {ESoftDeleteStatus} from '~/admin/constants/entries.constant';
+import { useTranslation } from 'react-i18next';
 
 export enum ECustomersSortVariant {
   createdAt_asc = 'createdAt_asc',
@@ -21,15 +22,16 @@ export interface FiltersProps {
 export const Filters: FC<FiltersProps> = ({query}) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
+  const { t } = useTranslation('customers');
 
   /* SORT START */
   const sortOptions: IndexFiltersProps['sortOptions'] = [
-    {label: 'Created', value: reqSortToSort(ECustomersSortVariant.createdAt_asc), directionLabel: 'Oldest to newest'},
-    {label: 'Created', value: reqSortToSort(ECustomersSortVariant.createdAt_desc), directionLabel: 'Newest to oldest'},
-    {label: 'Updated', value: reqSortToSort(ECustomersSortVariant.updatedAt_asc), directionLabel: 'Oldest to newest'},
-    {label: 'Updated', value: reqSortToSort(ECustomersSortVariant.updatedAt_desc), directionLabel: 'Newest to oldest'},
-    {label: 'Deleted', value: reqSortToSort(ECustomersSortVariant.deletedAt_asc), directionLabel: 'Oldest to newest'},
-    {label: 'Deleted', value: reqSortToSort(ECustomersSortVariant.deletedAt_desc), directionLabel: 'Newest to oldest'},
+    {label: t('table.createdAt'), value: reqSortToSort(ECustomersSortVariant.createdAt_asc), directionLabel: t('table.oldestToNewest')},
+    {label: t('table.createdAt'), value: reqSortToSort(ECustomersSortVariant.createdAt_desc), directionLabel: t('table.newestToOldest')},
+    {label: t('table.updatedAt'), value: reqSortToSort(ECustomersSortVariant.updatedAt_asc), directionLabel: t('table.oldestToNewest')},
+    {label: t('table.updatedAt'), value: reqSortToSort(ECustomersSortVariant.updatedAt_desc), directionLabel: t('table.newestToOldest')},
+    {label: t('table.deleteAt'), value: reqSortToSort(ECustomersSortVariant.deletedAt_asc), directionLabel: t('table.oldestToNewest')},
+    {label: t('table.deleteAt'), value: reqSortToSort(ECustomersSortVariant.deletedAt_desc), directionLabel: t('table.newestToOldest')},
   ];
 
   const sortOrder = query?.sort || ECustomersSortVariant.createdAt_desc;
@@ -115,18 +117,18 @@ export const Filters: FC<FiltersProps> = ({query}) => {
   const filters = [
     {
       key: 'softDeleteStatus',
-      label: 'Soft Delete Status',
+      label: t('table.softDeleteStatusFilter'),
       filter: (
         <ChoiceList
           title="Role"
           titleHidden
           choices={[
             {
-              label: 'Active',
+              label: t('table.active'),
               value: ESoftDeleteStatus.active,
             },
             {
-              label: 'Inactive',
+              label: t('table.inactive'),
               value: ESoftDeleteStatus.deleted,
             }
           ]}
@@ -155,7 +157,7 @@ export const Filters: FC<FiltersProps> = ({query}) => {
       sortOptions={sortOptions}
       sortSelected={sortSelected}
       queryValue={queryValue}
-      queryPlaceholder="Search customers"
+      queryPlaceholder={t('table.searchCustomers')}
       onQueryChange={handleFiltersQueryChange}
       onQueryClear={() => handleFiltersQueryChange('')}
       onSort={setSortSelected}

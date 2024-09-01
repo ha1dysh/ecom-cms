@@ -9,6 +9,7 @@ import {TAdminCustomersAddressEditLoader} from '~/.server/admin/loaders/customer
 import {EditForm} from '~/admin/components/customers/addresses/EditForm/EditForm';
 import {editFormValidator} from '~/admin/components/customers/addresses/EditForm/EditForm.validator';
 import {AddressDeleteForm} from '~/admin/components/customers/Single/AddressDeleteForm';
+import { useTranslation } from 'react-i18next';
 
 export {loader} from '~/.server/admin/loaders/customers/addresses/edit/loader';
 export {action} from '~/.server/admin/actions/customers/addresses/edit/action';
@@ -18,14 +19,15 @@ export default function AdminCustomerAddressEdit() {
   const {customerAddress} = useLoaderData<TAdminCustomersAddressEditLoader>();
   const [active, setActive] = useState(false);
   const toggleActive = useCallback(() => setActive((active) => !active), []);
+  const { t } = useTranslation('customers');
 
   const primaryAction = useCallback(() => (
-    <ValidatedSubmitButton text="save" variant="primary"/>
+    <ValidatedSubmitButton text={t('editAddress.saveButton')} variant="primary"/>
   ), []);
 
   const deleteAction = useMemo(() => (
     {
-      content: 'Delete address',
+      content: t('editAddress.deleteButton'),
       destructive: true,
       onAction: toggleActive,
     }
@@ -41,7 +43,7 @@ export default function AdminCustomerAddressEdit() {
     <>
       <ValidatedForm validator={editFormValidator} method="post">
         <Page
-          title={`Create new address for customer: ${data.customer.firstName} ${data.customer.lastName}`}
+          title={`${t('editAddress.title')}: ${data.customer.firstName} ${data.customer.lastName}`}
           backAction={{
             url: `${EAdminNavigation.customers}/${data.customer.id}`,
           }}

@@ -184,11 +184,11 @@ export const AdminUsersTableFilters: FC<UsersTableFiltersProps> = ({query}) => {
           titleHidden
           choices={[
             {
-              label: 'Active',
+              label: t('table.active'),
               value: ESoftDeleteStatus.active,
             },
             {
-              label: 'Deleted',
+              label: t('table.inactive'),
               value: ESoftDeleteStatus.deleted,
             }
           ]}

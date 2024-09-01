@@ -5,12 +5,15 @@ import {ValidatedForm} from 'remix-validated-form';
 import {ValidatedSubmitButton} from '~/admin/ui/ValidatedSubmitButton/ValidatedSubmitButton';
 import {newFormValidator} from '~/admin/components/customers/NewForm/NewForm.validator';
 import {NewForm} from '~/admin/components/customers/NewForm/NewForm';
+import { useTranslation } from 'react-i18next';
 
 export {action} from '~/.server/admin/actions/customers/new/action';
 
 export default function AdminCustomerNew() {
+  const { t } = useTranslation('customers');
+
   const primaryAction = useCallback(() => (
-    <ValidatedSubmitButton text="save" variant="primary"/>
+    <ValidatedSubmitButton text={t('new.saveButton')} variant="primary"/>
   ), []);
 
   return (

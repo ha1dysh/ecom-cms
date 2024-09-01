@@ -2,6 +2,7 @@ import {BlockStack, Card, FormLayout, Text} from '@shopify/polaris';
 import React, {FC} from 'react';
 import {ValidatedTextField} from '~/admin/ui/ValidatedTextField/ValidatedTextField';
 import {TCustomerAddressDto} from '~/.server/admin/dto/customer.dto';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   address?: TCustomerAddressDto;
@@ -9,16 +10,17 @@ type Props = {
 
 export const AddressCard: FC<Props> = (props) => {
   const {address} = props;
+  const { t } = useTranslation('customers');
 
   return (
     <Card>
       <BlockStack gap="200">
         <Text as="h2" variant="headingSm">
-          Delivery Address
+          {t('newAddress.deliveryAddress')}
         </Text>
         <FormLayout>
           <ValidatedTextField
-            label="Country"
+            label={t('newAddress.country')}
             type="text"
             name="address.country"
             autoComplete="country"
@@ -26,14 +28,14 @@ export const AddressCard: FC<Props> = (props) => {
           />
           <FormLayout.Group>
             <ValidatedTextField
-              label="First Name"
+              label={t('newAddress.firstName')}
               type="text"
               name="address.firstName"
               autoComplete="given-name"
               defaultValue={address?.firstName}
             />
             <ValidatedTextField
-              label="Last Name"
+              label={t('newAddress.lastName')}
               type="text"
               name="address.lastName"
               autoComplete="family-name"
@@ -41,21 +43,21 @@ export const AddressCard: FC<Props> = (props) => {
             />
           </FormLayout.Group>
           <ValidatedTextField
-            label="Company"
+            label={t('newAddress.company')}
             type="text"
             name="address.company"
             autoComplete="organization"
             defaultValue={address?.company || ''}
           />
           <ValidatedTextField
-            label="Address"
+            label={t('newAddress.address')}
             type="text"
             name="address.address"
             autoComplete="address-line1"
             defaultValue={address?.address}
           />
           <ValidatedTextField
-            label="Apartment, suite, etc"
+            label={t('newAddress.apartment')}
             type="text"
             name="address.apartment"
             autoComplete="apartment"
@@ -63,14 +65,14 @@ export const AddressCard: FC<Props> = (props) => {
           />
           <FormLayout.Group>
             <ValidatedTextField
-              label="City"
+              label={t('newAddress.city')}
               type="text"
               name="address.city"
               autoComplete="city"
               defaultValue={address?.city}
             />
             <ValidatedTextField
-              label="Postal Code"
+              label={t('newAddress.postalCode')}
               type="text"
               name="address.postalCode"
               autoComplete="postal-code"
@@ -78,7 +80,7 @@ export const AddressCard: FC<Props> = (props) => {
             />
           </FormLayout.Group>
           <ValidatedTextField
-            label="Phone"
+            label={t('newAddress.phone')}
             type="text"
             name="address.phone"
             autoComplete="phone"

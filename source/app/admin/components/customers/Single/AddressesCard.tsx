@@ -3,6 +3,7 @@ import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {PlusIcon} from '@shopify/polaris-icons';
 import React, {FC, useCallback, useMemo} from 'react';
 import type {TCustomerAddressDto, TCustomerDto} from '~/.server/admin/dto/customer.dto';
+import { useTranslation } from 'react-i18next';
 
 export type AddressesCardProps = {
   customer: TCustomerDto;
@@ -10,13 +11,14 @@ export type AddressesCardProps = {
 
 export const AddressesCard: FC<AddressesCardProps> = ({customer}) => {
   const resourceName = useMemo(() => ({singular: 'address', plural: 'addresses'}), []);
+  const { t } = useTranslation('customers');
 
   const renderItem = useCallback((item: TCustomerAddressDto) => {
     const {id, lastName, firstName, address, phone, city, country, apartment, company, postalCode} = item;
 
     const shortcutActions = [
       {
-        content: 'Edit',
+        content: t('single.editButton'),
         accessibilityLabel: `Edit address ${id}`,
         url: `${EAdminNavigation.customers}/${customer.id}/addresses/${id}/edit`,
       },
@@ -25,15 +27,14 @@ export const AddressesCard: FC<AddressesCardProps> = ({customer}) => {
     return (
       <ResourceItem
         id={id}
-        onClick={() => {
-        }}
+        onClick={() => {}}
         shortcutActions={shortcutActions}
         persistActions
       >
         <BlockStack gap="400">
           <BlockStack gap="200">
             <Text as="h3" variant="headingXs" fontWeight="medium">
-              Contact Information
+              {t("single.contactInformation")}
             </Text>
             <Text as="p" variant="bodyMd">
               {firstName} {lastName}
@@ -47,7 +48,7 @@ export const AddressesCard: FC<AddressesCardProps> = ({customer}) => {
           </BlockStack>
           <BlockStack gap="200">
             <Text as="h3" variant="headingXs" fontWeight="medium">
-              Address
+              {t("single.address")}
             </Text>
             <Text as="p" variant="bodyMd">
               {country}
@@ -60,7 +61,6 @@ export const AddressesCard: FC<AddressesCardProps> = ({customer}) => {
             </Text>
           </BlockStack>
         </BlockStack>
-
       </ResourceItem>
     );
   }, [customer.id]);
@@ -70,7 +70,7 @@ export const AddressesCard: FC<AddressesCardProps> = ({customer}) => {
       <Box padding="400">
         <InlineGrid columns="1fr auto">
           <Text as="h2" variant="headingSm">
-            Primary info
+            {t('single.addressTitle')}
           </Text>
           <Button
             url={`${EAdminNavigation.customers}/${customer.id}/addresses/new`}

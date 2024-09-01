@@ -6,6 +6,7 @@ import { IOffsetPaginationInfoDto } from '~/.server/shared/dto/offset-pagination
 import { usePagination } from '~/admin/hooks/usePagination';
 import { TProductReviewDto } from '~/.server/admin/dto/productReview.dto';
 import { redirect } from '@remix-run/react';
+import { useTranslation } from 'react-i18next';
 
 export type PrimaryInfoCardProps = {
   reviews: TProductReviewDto[];
@@ -13,12 +14,14 @@ export type PrimaryInfoCardProps = {
 }
 
 export const ReviewsCard: FC<PrimaryInfoCardProps> = ({ reviews, pagination }) => {
+  const { t } = useTranslation('customers');
+
   return (
     <Card>
       <BlockStack gap="200">
         <InlineGrid columns="1fr auto">
           <Text as="h2" variant="headingSm">
-            Reviews
+            {t('single.reviews')}
           </Text>
         </InlineGrid>
         <BlockStack gap="200">
@@ -37,17 +40,18 @@ function ReviewsList({
   pagination: IOffsetPaginationInfoDto;
 }) {
   const paginationProps = usePagination(pagination);
+  const { t } = useTranslation('customers');
 
   const emptyStateMarkup = !reviews.length ? (
     <EmptyState
-      heading="There are no reviews yet"
+      heading={t('single.reviewsHeading')}
       action={{
-        content: "Create Review",
+        content: t('single.reviewsCreateButton'),
         url: EAdminNavigation.reviewsCreate,
       }}
       image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
     >
-      <p>You can use the Reviews section to create, edit, and delete reviews.</p>
+      <p>{t('single.reviewsParagraph')}</p>
     </EmptyState>
   ) : undefined;
 

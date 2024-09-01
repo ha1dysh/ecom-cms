@@ -8,6 +8,7 @@ import {usePagination} from '~/admin/hooks/usePagination';
 import {TCustomerDto} from '~/.server/admin/dto/customer.dto';
 import type {TAdminCustomersLoaderData} from '~/.server/admin/loaders/customers/index/loader';
 import {Filters} from './Filters';
+import { useTranslation } from 'react-i18next';
 
 export interface ListProps {
   customers: TCustomerDto[];
@@ -22,13 +23,14 @@ export const Index: FC<ListProps> = ({customers, query, pagination}) => {
     singular: 'customer',
     plural: 'customers',
   }), []);
+  const { t } = useTranslation('customers');
 
   const headings: NonEmptyArray<IndexTableHeading> = useMemo(() => ([
-    {title: 'Customer Name'},
-    {title: 'Email'},
-    {title: 'Created at'},
-    {title: 'Updated at'},
-    {title: 'Deleted at'},
+    {title: t('table.customerName')},
+    {title: t('table.email')},
+    {title: t('table.createdAt')},
+    {title: t('table.updatedAt')},
+    {title: t('table.deleteAt')},
   ]), []);
 
   const rowMarkup = customers.map(

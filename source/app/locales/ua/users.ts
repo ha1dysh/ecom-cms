@@ -12,6 +12,8 @@ export default {
     searchUsers: "Пошук користувачів",
     roleFilter: "Роль",
     softDeleteStatusFilter: "Статус видалення",
+    active: "Активний",
+    inactive: "Неактивний",
     clear: "Очистити",
     sortBy: "Сортувати за",
     oldestToNewest: "Старіше до новішого",
@@ -49,6 +51,13 @@ export default {
     selectRole: "Виберіть роль",
     adminRole: "Адміністратор",
     staffRole: "Персонал",
+  },
+
+  delete: {
+    title: "Видалити користувача",
+    paragraph: "Ви впевнені, що хочете видалити",
+    deleteButton: "Видалити",
+    cancelButton: "Скасувати",
   },
 
   edit: {

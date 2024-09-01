@@ -7,14 +7,16 @@ import {useRouteLoaderData} from '@remix-run/react';
 import {TAdminCustomersSingleLoader} from '~/.server/admin/loaders/customers/single/loader';
 import {EditPrimaryForm} from '~/admin/components/customers/EditPrimaryForm/EditPrimaryForm';
 import {editPrimaryFormValidator} from '~/admin/components/customers/EditPrimaryForm/EditPrimaryForm.validator';
+import { useTranslation } from 'react-i18next';
 
 export {action} from '~/.server/admin/actions/customers/edit-primary/action';
 
 export default function AdminCustomersIdEditPrimary() {
   const data = useRouteLoaderData<TAdminCustomersSingleLoader>('routes/admin.customers.$id');
+  const { t } = useTranslation('customers');
 
   const primaryAction = useCallback(() => (
-    <ValidatedSubmitButton text="save" variant="primary"/>
+    <ValidatedSubmitButton text={t('edit.saveButton')} variant="primary"/>
   ), []);
 
   if (!data?.customer) {
@@ -24,7 +26,7 @@ export default function AdminCustomersIdEditPrimary() {
   return (
     <ValidatedForm validator={editPrimaryFormValidator} method="post">
       <Page
-        title="Edit customer primary info"
+        title={t('edit.title')}
         backAction={{
           url: `${EAdminNavigation.customers}/${data.customer.id}`,
         }}
