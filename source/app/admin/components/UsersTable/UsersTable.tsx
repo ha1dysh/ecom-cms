@@ -9,6 +9,7 @@ import type {TAdminUsersLoaderData} from '~/.server/admin/loaders/users.loader';
 import {AdminUsersTableFilters} from '~/admin/components/UsersTable/UsersTableFilters';
 import {IOffsetPaginationInfoDto} from '~/.server/shared/dto/offset-pagination-info.dto';
 import {usePagination} from '~/admin/hooks/usePagination';
+import { useTranslation } from 'react-i18next';
 
 export interface UsersTableProps {
   users: TUserDto[];
@@ -19,18 +20,20 @@ export interface UsersTableProps {
 
 export const AdminUsersTable: FC<UsersTableProps> = ({users, query, pagination}) => {
   const paginationProps = usePagination(pagination);
+  const { t } = useTranslation('users');
+
   const resourceName = useMemo(() => ({
     singular: 'user',
     plural: 'users',
   }), []);
 
   const headings: NonEmptyArray<IndexTableHeading> = useMemo(() => ([
-    {title: 'Email'},
-    {title: 'Full Name'},
-    {title: 'Role'},
-    {title: 'Created at'},
-    {title: 'Updated at'},
-    {title: 'Deleted at'},
+    {title: t('table.email')},
+    {title: t('table.fullName')},
+    {title: t('table.role')},
+    {title: t('table.createdAt')},
+    {title: t('table.updatedAt')},
+    {title: t('table.deleteAt')},
   ]), []);
 
   const rowMarkup = users.map(

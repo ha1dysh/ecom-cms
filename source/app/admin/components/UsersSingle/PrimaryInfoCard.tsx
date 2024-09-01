@@ -3,18 +3,21 @@ import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {EditIcon} from '@shopify/polaris-icons';
 import React, {FC} from 'react';
 import {TUserDto} from '~/.server/admin/dto/user.dto';
+import { useTranslation } from 'react-i18next';
 
 export type PrimaryInfoCardProps = {
   user: TUserDto;
 }
 
 export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({user}) => {
+  const { t } = useTranslation('users');
+
   return (
     <Card>
       <BlockStack gap="200">
         <InlineGrid columns="1fr auto">
           <Text as="h2" variant="headingSm">
-            Primary info
+            {t('single.primaryInfo')}
           </Text>
           <Button
             url={`${EAdminNavigation.users}/${user.id}/primary`}
@@ -24,7 +27,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({user}) => {
         </InlineGrid>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Full Name
+            {t('single.fullName')}
           </Text>
           <Text as="p" variant="bodyMd">
             {user.fullName}
@@ -32,7 +35,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({user}) => {
         </BlockStack>
         <BlockStack gap="200">
           <Text as="h3" variant="headingXs" fontWeight="medium">
-            Email
+            {t('single.email')}
           </Text>
           <Text as="p" variant="bodyMd">
             {user.email}

@@ -1,0 +1,11 @@
+export default {
+  navMenu: {
+    home: 'Головна',
+    users: 'Користувачі',
+    customers: 'Клієнти',
+    products: 'Продукти',
+    categories: 'Категорії',
+    reviews: 'Відгуки',
+    orders: 'Замовлення',
+  },
+};

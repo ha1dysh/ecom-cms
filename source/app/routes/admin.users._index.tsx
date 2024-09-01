@@ -1,39 +1,33 @@
-import React from 'react';
 import {useLoaderData} from '@remix-run/react';
-import {BlockStack, Card, Page, Text} from '@shopify/polaris';
+import {Page} from '@shopify/polaris';
 import {PlusIcon} from '@shopify/polaris-icons';
 import {EAdminNavigation} from '~/admin/constants/navigation.constant';
 import {adminUsersLoader} from '~/.server/admin/loaders/users.loader';
 import {AdminUsersTable} from '~/admin/components/UsersTable/UsersTable';
+import { useTranslation } from 'react-i18next';
 
 export const loader = adminUsersLoader;
 
 export default function AdminUsersIndex() {
   const data = useLoaderData<typeof loader>();
+  const { t } = useTranslation('users');
 
   return (
     <Page
       fullWidth
-      title="Users"
+      title={t("title")}
       primaryAction={{
-        content: 'Create user',
+        content: t("createButton"),
         icon: PlusIcon,
-        accessibilityLabel: 'Create user',
+        accessibilityLabel: t("createButton"),
         url: EAdminNavigation.usersCreate,
       }}
     >
-      <AdminUsersTable users={data.users} query={data.query} pagination={data.pagination}/>
-
-      <Card>
-        <BlockStack gap="200">
-          <Text as="h2" variant="headingSm">
-            Credit card
-          </Text>
-          <pre>
-            {JSON.stringify(data, null, 2)}
-          </pre>
-        </BlockStack>
-      </Card>
+      <AdminUsersTable
+        users={data.users}
+        query={data.query}
+        pagination={data.pagination}
+      />
     </Page>
   );
 }

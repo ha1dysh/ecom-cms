@@ -2,20 +2,22 @@ import {BlockStack, Card, FormLayout, SelectProps, Text} from '@shopify/polaris'
 import React, {useMemo} from 'react';
 import {ValidatedSelect} from '~/admin/ui/ValidatedSelect/ValidatedSelect';
 import {$Enums} from '@prisma/client';
+import { useTranslation } from 'react-i18next';
 
 export const RoleCard = () => {
+  const { t } = useTranslation('users');
 
   const roleOptions: SelectProps['options'] = useMemo(() => ([
     {
-      label: 'Select role',
+      label: t('new.selectRole'),
       value: '',
     },
     {
-      label: 'Admin',
+      label: t('new.adminRole'),
       value: $Enums.AdminRole.ADMIN,
     },
     {
-      label: 'Staff',
+      label: t('new.staffRole'),
       value: $Enums.AdminRole.STUFF,
     }
   ]), []);
@@ -25,7 +27,7 @@ export const RoleCard = () => {
     <Card>
       <BlockStack gap="200">
         <Text as="h2" variant="headingSm">
-          Role
+          {t('new.role')}
         </Text>
         <FormLayout>
           <ValidatedSelect

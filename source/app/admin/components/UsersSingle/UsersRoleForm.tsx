@@ -8,6 +8,7 @@ import {usersRoleFormValidator} from '~/admin/components/UsersSingle/UsersRoleFo
 import {ValidatedSubmitButton} from '~/admin/ui/ValidatedSubmitButton/ValidatedSubmitButton';
 import {ValidatedAction} from '~/admin/ui/ValidatedAction/ValidatedAction';
 import {EAdminUserAction} from '~/admin/constants/action.constant';
+import { useTranslation } from 'react-i18next';
 
 export type UsersRoleFormProps = {
   role: TUserDto['role'];
@@ -16,18 +17,19 @@ export type UsersRoleFormProps = {
 
 export const UsersRoleForm: FC<UsersRoleFormProps> = (props) => {
   const {role, toggleActive} = props;
+  const { t } = useTranslation('users');
 
   const roleOptions: SelectProps['options'] = useMemo(() => ([
     {
-      label: 'Select role',
+      label: t('single.selectRole'),
       value: '',
     },
     {
-      label: 'Admin',
+      label: t('single.adminRole'),
       value: $Enums.AdminRole.ADMIN,
     },
     {
-      label: 'Staff',
+      label: t('single.staffRole'),
       value: $Enums.AdminRole.STUFF,
     }
   ]), []);
@@ -51,8 +53,8 @@ export const UsersRoleForm: FC<UsersRoleFormProps> = (props) => {
       <Divider/>
       <Box padding="400">
         <InlineStack direction="row-reverse" align="end" gap="200">
-          <ValidatedSubmitButton text={'Save'} variant="primary"/>
-          <Button onClick={toggleActive}>Cancel</Button>
+          <ValidatedSubmitButton text={t('single.roleSaveButton')} variant="primary"/>
+          <Button onClick={toggleActive}>{t('single.roleCancelButton') }</Button>
         </InlineStack>
       </Box>
     </ValidatedForm>

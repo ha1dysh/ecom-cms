@@ -6,6 +6,7 @@ import {UsersSingle} from '~/admin/components/UsersSingle/UsersSingle';
 import {adminUsersSingleLoader} from '~/.server/admin/loaders/users.single.loader';
 import {adminUsersSingleAction} from '~/.server/admin/actions/users.single.action';
 import {UsersDeleteForm} from '~/admin/components/UsersSingle/UsersDeleteForm';
+import { useTranslation } from 'react-i18next';
 
 export const loader = adminUsersSingleLoader;
 
@@ -14,12 +15,13 @@ export const action = adminUsersSingleAction;
 export default function AdminUsersSingle() {
   const {user} = useLoaderData<typeof loader>();
   const [active, setActive] = useState(false);
+  const { t } = useTranslation('users');
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
 
   const deleteAction = useMemo(() => (
     {
-      content: 'Delete user',
+      content: t('single.deleteButton'),
       destructive: true,
       onAction: toggleActive,
     }
@@ -27,7 +29,7 @@ export default function AdminUsersSingle() {
 
   const securityAction = useMemo(() => (
     {
-      content: 'Security',
+      content: t('single.security'),
       accessibilityLabel: 'Security',
       url: `${EAdminNavigation.users}/${user.id}/security`
     }

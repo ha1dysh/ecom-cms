@@ -81,7 +81,7 @@ export const BaseNav: FC<Props> = ({user}) => {
         ],
       },
     ];
-  }, [user.role, i18n.language]);
+  }, [user.role]);
 
   return (
     <Navigation location={location.pathname}>

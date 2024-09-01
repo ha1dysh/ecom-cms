@@ -1,5 +1,3 @@
-// import { supportedLanguages } from "./resource";
-
 export default {
 	// This is the list of languages your application supports
 	supportedLngs: ['en', 'ua'],

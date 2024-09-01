@@ -5,6 +5,7 @@ import {useSearchParams} from '@remix-run/react';
 import {$Enums} from '@prisma/client';
 import {reqSortToSort, sortArrToReqSort} from '~/admin/utils/filter.util';
 import {ESoftDeleteStatus} from '~/admin/constants/entries.constant';
+import { useTranslation } from 'react-i18next';
 
 
 export enum EUsersSortVariant {
@@ -29,25 +30,25 @@ export interface UsersTableFiltersProps {
 }
 
 export const AdminUsersTableFilters: FC<UsersTableFiltersProps> = ({query}) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
+  const { t } = useTranslation('users');
 
   /* SORT START */
   const sortOptions: IndexFiltersProps['sortOptions'] = [
-    {label: 'ID', value: reqSortToSort(EUsersSortVariant.id_asc), directionLabel: 'Oldest to newest'},
-    {label: 'ID', value: reqSortToSort(EUsersSortVariant.id_desc), directionLabel: 'Newest to oldest'},
-    {label: 'Email', value: reqSortToSort(EUsersSortVariant.email_asc), directionLabel: 'A-Z'},
-    {label: 'Email', value: reqSortToSort(EUsersSortVariant.email_desc), directionLabel: 'Z-A'},
-    {label: 'Full Name', value: reqSortToSort(EUsersSortVariant.fullName_asc), directionLabel: 'A-Z'},
-    {label: 'Full Name', value: reqSortToSort(EUsersSortVariant.fullName_desc), directionLabel: 'Z-A'},
-    {label: 'Role', value: reqSortToSort(EUsersSortVariant.role_asc), directionLabel: 'A-Z'},
-    {label: 'Role', value: reqSortToSort(EUsersSortVariant.role_desc), directionLabel: 'Z-A'},
-    {label: 'Created', value: reqSortToSort(EUsersSortVariant.createdAt_asc), directionLabel: 'Oldest to newest'},
-    {label: 'Created', value: reqSortToSort(EUsersSortVariant.createdAt_desc), directionLabel: 'Newest to oldest'},
-    {label: 'Updated', value: reqSortToSort(EUsersSortVariant.updatedAt_asc), directionLabel: 'Oldest to newest'},
-    {label: 'Updated', value: reqSortToSort(EUsersSortVariant.updatedAt_desc), directionLabel: 'Newest to oldest'},
-    {label: 'Deleted', value: reqSortToSort(EUsersSortVariant.deletedAt_asc), directionLabel: 'Oldest to newest'},
-    {label: 'Deleted', value: reqSortToSort(EUsersSortVariant.deletedAt_desc), directionLabel: 'Newest to oldest'},
+    {label: 'ID', value: reqSortToSort(EUsersSortVariant.id_asc), directionLabel: t('table.oldestToNewest')},
+    {label: 'ID', value: reqSortToSort(EUsersSortVariant.id_desc), directionLabel: t('table.newestToOldest')},
+    {label: t('table.email'), value: reqSortToSort(EUsersSortVariant.email_asc), directionLabel: t('table.az')},
+    {label: t('table.email'), value: reqSortToSort(EUsersSortVariant.email_desc), directionLabel: t('table.za')},
+    {label: t('table.fullName'), value: reqSortToSort(EUsersSortVariant.fullName_asc), directionLabel: t('table.az')},
+    {label: t('table.fullName'), value: reqSortToSort(EUsersSortVariant.fullName_desc), directionLabel: t('table.za')},
+    {label: t('table.role'), value: reqSortToSort(EUsersSortVariant.role_asc), directionLabel: t('table.az')},
+    {label: t('table.role'), value: reqSortToSort(EUsersSortVariant.role_desc), directionLabel: t('table.za')},
+    {label: t('table.createdAt'), value: reqSortToSort(EUsersSortVariant.createdAt_asc), directionLabel: t('table.oldestToNewest')},
+    {label: t('table.createdAt'), value: reqSortToSort(EUsersSortVariant.createdAt_desc), directionLabel: t('table.newestToOldest')},
+    {label: t('table.updatedAt'), value: reqSortToSort(EUsersSortVariant.updatedAt_asc), directionLabel: t('table.oldestToNewest')},
+    {label: t('table.updatedAt'), value: reqSortToSort(EUsersSortVariant.updatedAt_desc), directionLabel: t('table.newestToOldest')},
+    {label: t('table.deleteAt'), value: reqSortToSort(EUsersSortVariant.deletedAt_asc), directionLabel: t('table.oldestToNewest')},
+    {label: t('table.deleteAt'), value: reqSortToSort(EUsersSortVariant.deletedAt_desc), directionLabel: t('table.newestToOldest')},
   ];
 
   const sortOrder = query?.sort || EUsersSortVariant.id_desc;
@@ -158,7 +159,7 @@ export const AdminUsersTableFilters: FC<UsersTableFiltersProps> = ({query}) => {
   const filters = [
     {
       key: 'role',
-      label: 'Role',
+      label: t('table.roleFilter'),
       filter: (
         <ChoiceList
           title="Role"
@@ -176,7 +177,7 @@ export const AdminUsersTableFilters: FC<UsersTableFiltersProps> = ({query}) => {
     },
     {
       key: 'softDeleteStatus',
-      label: 'Soft Delete Status',
+      label: t('table.softDeleteStatusFilter'),
       filter: (
         <ChoiceList
           title="Role"
@@ -224,7 +225,7 @@ export const AdminUsersTableFilters: FC<UsersTableFiltersProps> = ({query}) => {
       sortOptions={sortOptions}
       sortSelected={sortSelected}
       queryValue={queryValue}
-      queryPlaceholder="Search users"
+      queryPlaceholder={t('table.searchUsers')}
       onQueryChange={handleFiltersQueryChange}
       onQueryClear={() => handleFiltersQueryChange('')}
       onSort={setSortSelected}

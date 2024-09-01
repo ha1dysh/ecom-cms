@@ -1,6 +1,7 @@
 import {BlockStack, Button, Card, InlineGrid, Modal, Text} from '@shopify/polaris';
 import {EditIcon} from '@shopify/polaris-icons';
 import React, {FC, useCallback, useState} from 'react';
+import { useTranslation } from 'react-i18next';
 import {TUserDto} from '~/.server/admin/dto/user.dto';
 import {UsersRoleForm} from '~/admin/components/UsersSingle/UsersRoleForm';
 
@@ -10,6 +11,7 @@ export type RoleCardProps = {
 
 export const RoleCard: FC<RoleCardProps> = (props) => {
   const {user: {role}} = props;
+  const { t } = useTranslation('users');
   const [active, setActive] = useState(false);
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
@@ -19,7 +21,7 @@ export const RoleCard: FC<RoleCardProps> = (props) => {
       <BlockStack gap="200">
         <InlineGrid columns="1fr auto">
           <Text as="h2" variant="headingSm">
-            Role
+            {t('single.role')}
           </Text>
           <Button
             onClick={toggleActive}
@@ -35,7 +37,7 @@ export const RoleCard: FC<RoleCardProps> = (props) => {
         size="small"
         open={active}
         onClose={toggleActive}
-        title="Change role"
+        title={t('single.changeRole')}
       >
         <UsersRoleForm role={role} toggleActive={toggleActive}/>
       </Modal>
