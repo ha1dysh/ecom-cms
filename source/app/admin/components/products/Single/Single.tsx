@@ -9,28 +9,34 @@ import { IOffsetPaginationInfoDto } from '~/.server/shared/dto/offset-pagination
 import { TProductReviewDto } from '~/.server/admin/dto/productReview.dto';
 import { TUserDto } from '~/.server/admin/dto/user.dto';
 import { hasAdminRole } from '~/admin/utils/access.util';
+import { TranslationsCard } from './TranslationsCard';
+import { TProductTranslationDto } from '~/.server/admin/dto/productTranslation.dto';
 
 export type SingleProps = {
   user: TUserDto;
   product: TProductDto;
   categories: TCategoryDto[];
   reviews: TProductReviewDto[]
+  translations: TProductTranslationDto[];
   pagination: IOffsetPaginationInfoDto;
 }
 
-export const Single: FC<SingleProps> = ({user, product, categories, reviews, pagination}) => {
+export const Single: FC<SingleProps> = ({user, product, categories, reviews, translations, pagination}) => {
 
   return (
     <Layout>
       <Layout.Section>
         <BlockStack gap="500">
-          <PrimaryInfoCard product={product} />
+          <PrimaryInfoCard product={product} translations={translations} />
           {hasAdminRole(user) && <ReviewsCard reviews={reviews} pagination={pagination} />}
         </BlockStack>
       </Layout.Section>
 
       <Layout.Section variant="oneThird">
-        <CategoryCard product={product} categories={categories} />
+        <BlockStack gap="500">
+          <CategoryCard product={product} categories={categories} />
+          <TranslationsCard translations={translations} />
+        </BlockStack>
       </Layout.Section>
     </Layout>
   );

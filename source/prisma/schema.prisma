@@ -83,12 +83,28 @@ model Category {
   updatedAt   DateTime  @updatedAt
   deletedAt   DateTime?
 
-  products Product[]
+  products     Product[]
+  translations CategoryTranslation[]
 
   @@index([createdAt], name: "CategoryCreatedAtIndex")
   @@index([updatedAt], name: "CategoryUpdatedAtIndex")
   @@index([deletedAt], name: "CategoryDeletedAtIndex")
   @@index([title, slug], name: "CategorySearchIndex")
+}
+
+model CategoryTranslation {
+  id         Int       @id @default(autoincrement())
+  categoryId Int
+  language   Languages @default(UA)
+  title      String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  category Category @relation(fields: [categoryId], references: [id])
+
+  @@index([categoryId], name: "CategoryTranslationCategoryIdIndex")
+  @@index([language], name: "CategoryTranslationLanguageIndex")
+  @@index([title], name: "CategoryTranslationTitleIndex")
 }
 
 model Product {
@@ -109,10 +125,10 @@ model Product {
   updatedAt      DateTime      @updatedAt
   deletedAt      DateTime?
 
-  categoryId Int?
-  category   Category? @relation(fields: [categoryId], references: [id])
-
-  reviews ProductReview[]
+  categoryId   Int?
+  category     Category?            @relation(fields: [categoryId], references: [id])
+  reviews      ProductReview[]
+  translations ProductTranslation[]
 
   // images          ProductImage[]
   // variants        ProductVariant[]
@@ -127,6 +143,22 @@ model Product {
   @@index([compareAtPrice], name: "ProductCompareAtPriceIndex")
   @@index([avgRate], name: "ProductAvgRateIndex")
   @@index([totalReviews], name: "ProductTotalReviewsIndex")
+}
+
+model ProductTranslation {
+  id          Int       @id @default(autoincrement())
+  productId   Int
+  language    Languages @default(UA)
+  title       String
+  description String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  product Product @relation(fields: [productId], references: [id])
+
+  @@index([productId], name: "ProductTranslationProductIdIndex")
+  @@index([language], name: "ProductTranslationLanguageIndex")
+  @@index([title, description], name: "ProductTranslationSearchIndex")
 }
 
 model ProductReview {
@@ -161,4 +193,8 @@ enum ProductStatus {
   ACTIVE
   DRAFT
   ARCHIVED
+}
+
+enum Languages {
+  UA
 }

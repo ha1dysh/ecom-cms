@@ -58,6 +58,22 @@
     "saveButton": "Save"
   },
 
+  "translations": {
+    "cardTitle": "Translations",
+    "createTitle": "Create translation",
+    "selectLanguage": "Select language",
+    "Ukrainian": "Ukrainian",
+    "language": "Language",
+    "title": "Title",
+    "description": "Description",
+    "deleteTitle": "Delete translation",
+    "deleteParagraph": "Are you sure you want to delete translation",
+    "deleteButton": "Delete",
+    "cancelButton": "Cancel",
+    "saveButton": "Save",
+    "updateTitle": "Update translation"
+  },
+
   "new": {
     "title": "Create new product",
     "saveButton": "Create",

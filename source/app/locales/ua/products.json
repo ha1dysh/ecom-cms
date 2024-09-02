@@ -58,6 +58,21 @@
     "saveButton": "Зберегти"
   },
 
+  "translations": {
+    "cardTitle": "Переклади",
+    "createTitle": "Створити переклад",
+    "selectLanguage": "Виберіть мову",
+    "Ukrainian": "Українська",
+    "language": "Мова",
+    "title": "Назва",
+    "description": "Опис",
+    "deleteTitle": "Видалити переклад",
+    "deleteParagraph": "Ви впевнені, що хочете видалити переклад",
+    "saveButton": "Зберегти",
+    "deleteButton": "Видалити",
+    "cancelButton": "Скасувати"
+  },
+
   "new": {
     "title": "Створити новий продукт",
     "saveButton": "Створити",

@@ -4,13 +4,18 @@ import {EditIcon} from '@shopify/polaris-icons';
 import React, {FC} from 'react';
 import {TProductDto} from '~/.server/admin/dto/product.dto';
 import { useTranslation } from 'react-i18next';
+import { TProductTranslationDto } from '~/.server/admin/dto/productTranslation.dto';
 
 export type PrimaryInfoCardProps = {
   product: TProductDto;
+  translations: TProductTranslationDto[];
 }
 
-export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
-  const { t } = useTranslation('products');
+export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product, translations}) => {
+  const { t, i18n } = useTranslation('products');
+
+  const title = translations
+    .find((t) => t.language.toLowerCase() === i18n.language)?.title || product.title;
 
   return (
     <Card>
@@ -38,7 +43,7 @@ export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product}) => {
             {t('single.productTitle')}
           </Text>
           <Text as="p" variant="bodyMd">
-            {product.title}
+            {title}
           </Text>
         </BlockStack>
         <BlockStack gap="200">

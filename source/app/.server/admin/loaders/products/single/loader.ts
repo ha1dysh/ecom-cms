@@ -7,6 +7,7 @@ import {SerializeFrom} from '@remix-run/server-runtime';
 import {categoryMapper} from '~/.server/admin/mappers/category.mapper';
 import { requestToSearchParams, queryToPagination, hasNextCalculate } from '~/.server/admin/utils/query.util';
 import { ProductReviewMapper } from '~/.server/admin/mappers/productReview.mapper';
+import { productTranslationMapper } from '~/.server/admin/mappers/productTranslations.mapper';
 
 export async function loader({request, params}: LoaderFunctionArgs) {
   await getAuthUser(request);
@@ -55,10 +56,15 @@ export async function loader({request, params}: LoaderFunctionArgs) {
     skip: pagination.skip,
   });
 
+  const translations = await prisma.productTranslation.findMany({
+    where: { productId: product.id },
+  });
+
   return json({
     product: productMapper(product),
     categories: categories.map(categoryMapper),
     reviews: reviews.map(ProductReviewMapper),
+    translations: translations.map(productTranslationMapper),
     pagination
   });
 }
