@@ -1,16 +1,16 @@
-import enCommon from "~/locales/en/common";
-import enUsers from "./en/users";
-import enCustomers from "./en/customers";
-import enProducts from "./en/products";
-import enCategories from "./en/categories";
-import enReviews from "./en/reviews";
+import enCommon from "~/locales/en/common.json";
+import enUsers from "./en/users.json";
+import enCustomers from "./en/customers.json";
+import enProducts from "./en/products.json";
+import enCategories from "./en/categories.json";
+import enReviews from "./en/reviews.json";
 
-import uaCommon from "~/locales/ua/common";
-import uaUsers from "./ua/users";
-import uaCustomers from "./ua/customers";
-import uaProducts from "./ua/products";
-import uaCategories from "./ua/categories";
-import uaReviews from "./ua/reviews";
+import uaCommon from "~/locales/ua/common.json";
+import uaUsers from "./ua/users.json";
+import uaCustomers from "./ua/customers.json";
+import uaProducts from "./ua/products.json";
+import uaCategories from "./ua/categories.json";
+import uaReviews from "./ua/reviews.json";
 
 // This is the list of languages your application supports
 export const supportedLngs = ["ua", "en"];
