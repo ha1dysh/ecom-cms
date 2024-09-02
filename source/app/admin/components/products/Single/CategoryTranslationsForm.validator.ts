@@ -6,30 +6,28 @@ import { EAdminProductAction, FORM_ACTION_FIELD } from "~/admin/constants/action
 const idRule = z.coerce.number().positive({message: 'Id is required'});
 const langRule = z.nativeEnum($Enums.Languages, {message: 'Language is required'});
 const titleRule = z.string().trim().min(1, {message: 'Title is required'});
-const descriptionRule = z.string().trim().min(1, {message: 'Description is required'}).max(1024, {message: 'Description max length: 1024'});
 
-export const TranslationCreateFormValidator = withZod(
+export const CategoryTranslationsCreateFormValidator = withZod(
   z.object({
+    categoryId: idRule,
     language: langRule,
     title: titleRule,
-    description: descriptionRule,
-    [FORM_ACTION_FIELD]: z.literal(EAdminProductAction.createTranslation),
+    [FORM_ACTION_FIELD]: z.literal(EAdminProductAction.categoryCreateTranslation),
   })
 );
 
-export const TranslationUpdateFormValidator = withZod(
+export const CategoryTranslationUpdateFormValidator = withZod(
   z.object({
     id: idRule,
     language: langRule,
     title: titleRule,
-    description: descriptionRule,
-    [FORM_ACTION_FIELD]: z.literal(EAdminProductAction.updateTranslation),
+    [FORM_ACTION_FIELD]: z.literal(EAdminProductAction.categoryUpdateTranslation),
   })
 );
 
-export const TranslationDeleteFormValidator = withZod(
+export const CategoryTranslationDeleteFormValidator = withZod(
   z.object({
     id: idRule,
-    [FORM_ACTION_FIELD]: z.literal(EAdminProductAction.deleteTranslation),
+    [FORM_ACTION_FIELD]: z.literal(EAdminProductAction.categoryDeleteTranslation),
   })
 );

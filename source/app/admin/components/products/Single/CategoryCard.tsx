@@ -5,19 +5,23 @@ import {TProductDto} from '~/.server/admin/dto/product.dto';
 import {CategoryForm} from '~/admin/components/products/Single/CategoryForm';
 import {TCategoryDto} from '~/.server/admin/dto/category.dto';
 import { useTranslation } from 'react-i18next';
+import { TCategoryTranslationDto } from '~/.server/admin/dto/categoryTranslation.dto';
 
 type Props = {
   product: Pick<TProductDto, 'id' | 'categoryId' | 'category'>;
   categories: TCategoryDto[];
+  categoryTranslations: TCategoryTranslationDto[];
 }
 
 export const CategoryCard: FC<Props> = (props) => {
-  const {product, categories} = props;
+  const {product, categories, categoryTranslations} = props;
   const {category, categoryId} = product;
   const [active, setActive] = useState(false);
-  const { t } = useTranslation('products');
+  const { t, i18n } = useTranslation('products');
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const title = categoryTranslations.find((t) => t.language.toLowerCase() === i18n.language)?.title || category?.title;
 
   return (
     <Card>
@@ -34,7 +38,7 @@ export const CategoryCard: FC<Props> = (props) => {
         </InlineGrid>
         <BlockStack gap="200">
           <Text as="p" variant="bodyMd">
-            {category?.title || 'No category'}
+            {title || 'No category'}
           </Text>
         </BlockStack>
       </BlockStack>

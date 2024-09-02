@@ -10,23 +10,25 @@ import { ValidatedSelect } from '~/admin/ui/ValidatedSelect/ValidatedSelect';
 import { TranslationCreateFormValidator } from './TranslationsForm.validator';
 import { $Enums } from '@prisma/client';
 import { TProductTranslationDto } from '~/.server/admin/dto/productTranslation.dto';
+import { TCategoryTranslationDto } from '~/.server/admin/dto/categoryTranslation.dto';
+import { CategoryTranslationsCreateFormValidator } from './CategoryTranslationsForm.validator';
 
 type Props = {
   toggleActive: () => void;
-  productTranslations?: TProductTranslationDto[];
+  categoryTranslations?: TCategoryTranslationDto[];
+  categoryId: string;
 }
 
 type SubmittedData = {
   language: $Enums.Languages;
   title: string;
-  description: string;
 }
 
-export const TranslationsCreate: FC<Props> = ({ toggleActive, productTranslations }) => {
+export const CategoryTranslationsCreate: FC<Props> = ({ categoryId, toggleActive, categoryTranslations }) => {
   const { t } = useTranslation("products");
 
   function onSubmit(data: SubmittedData) {
-    const isLangExist = productTranslations?.some((t) => t.language === data.language);
+    const isLangExist = categoryTranslations?.some((t) => t.language === data.language);
 
     if (isLangExist) {
       validationError({
@@ -40,12 +42,13 @@ export const TranslationsCreate: FC<Props> = ({ toggleActive, productTranslation
 
   return (
     <ValidatedForm
-      validator={TranslationCreateFormValidator}
+      validator={CategoryTranslationsCreateFormValidator}
       method="post"
       onSubmit={onSubmit}
     >
       <Box padding="200" paddingBlockEnd="0">
-        <ValidatedAction action={EAdminProductAction.createTranslation} />
+        <ValidatedAction action={EAdminProductAction.categoryCreateTranslation} />
+        <input type="hidden" name="categoryId" value={categoryId} />
       </Box>
 
       <Box padding="400" paddingBlockStart="200">
@@ -62,12 +65,6 @@ export const TranslationsCreate: FC<Props> = ({ toggleActive, productTranslation
             name="title"
             label={t('translations.title')}
             autoComplete="off"
-          />
-          <ValidatedTextField
-            name="description"
-            label={t('translations.description')}
-            autoComplete="off"
-            multiline={3}
           />
         </FormLayout>
       </Box>

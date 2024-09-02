@@ -59,7 +59,7 @@
   },
 
   "translations": {
-    "cardTitle": "Translations",
+    "cardTitle": "Product translations",
     "createTitle": "Create translation",
     "selectLanguage": "Select language",
     "Ukrainian": "Ukrainian",
@@ -72,6 +72,11 @@
     "cancelButton": "Cancel",
     "saveButton": "Save",
     "updateTitle": "Update translation"
+  },
+
+  "categoryTranslations": {
+    "cardTitle": "Category translations",
+    "createTitle": "Create translation"
   },
 
   "new": {

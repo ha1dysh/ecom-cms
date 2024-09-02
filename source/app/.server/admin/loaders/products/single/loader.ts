@@ -8,6 +8,7 @@ import {categoryMapper} from '~/.server/admin/mappers/category.mapper';
 import { requestToSearchParams, queryToPagination, hasNextCalculate } from '~/.server/admin/utils/query.util';
 import { ProductReviewMapper } from '~/.server/admin/mappers/productReview.mapper';
 import { productTranslationMapper } from '~/.server/admin/mappers/productTranslations.mapper';
+import { categoryTranslationMapper } from '~/.server/admin/mappers/categorryTranslations.mapper';
 
 export async function loader({request, params}: LoaderFunctionArgs) {
   await getAuthUser(request);
@@ -56,15 +57,31 @@ export async function loader({request, params}: LoaderFunctionArgs) {
     skip: pagination.skip,
   });
 
-  const translations = await prisma.productTranslation.findMany({
+  const productsTranslations = await prisma.productTranslation.findMany({
     where: { productId: product.id },
+  });
+
+  if (!product.categoryId) {
+    return json({
+      product: productMapper(product),
+      categories: categories.map(categoryMapper),
+      reviews: reviews.map(ProductReviewMapper),
+      productTranslations: productsTranslations.map(productTranslationMapper),
+      categoryTranslations: null,
+      pagination
+    });
+  }
+
+  const categoriesTranslations = await prisma.categoryTranslation.findMany({
+    where: { categoryId: product.categoryId },
   });
 
   return json({
     product: productMapper(product),
     categories: categories.map(categoryMapper),
     reviews: reviews.map(ProductReviewMapper),
-    translations: translations.map(productTranslationMapper),
+    productTranslations: productsTranslations.map(productTranslationMapper),
+    categoryTranslations: categoriesTranslations.map(categoryTranslationMapper),
     pagination
   });
 }

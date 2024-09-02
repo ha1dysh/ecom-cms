@@ -52,7 +52,8 @@ export default function AdminProductsIdIndex() {
         product={data?.product}
         categories={data?.categories || []}
         reviews={data?.reviews}
-        translations={data?.translations}
+        productTranslations={data?.productTranslations}
+        categoryTranslations={data?.categoryTranslations || []}
         pagination={data?.pagination}
       />
       <Modal

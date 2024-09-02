@@ -4,7 +4,6 @@ import { prisma } from "~/.server/shared/services/prisma.service";
 import { TranslationDeleteFormValidator, TranslationUpdateFormValidator } from "~/admin/components/products/Single/TranslationsForm.validator";
 
 type Args = {
-  productId: number;
   formData: any;
 }
 

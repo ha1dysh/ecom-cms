@@ -8,13 +8,13 @@ import { TProductTranslationDto } from '~/.server/admin/dto/productTranslation.d
 
 export type PrimaryInfoCardProps = {
   product: TProductDto;
-  translations: TProductTranslationDto[];
+  productTranslations: TProductTranslationDto[];
 }
 
-export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product, translations}) => {
+export const PrimaryInfoCard: FC<PrimaryInfoCardProps> = ({product, productTranslations}) => {
   const { t, i18n } = useTranslation('products');
 
-  const title = translations
+  const title = productTranslations
     .find((t) => t.language.toLowerCase() === i18n.language)?.title || product.title;
 
   return (

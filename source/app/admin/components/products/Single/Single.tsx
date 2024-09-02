@@ -11,31 +11,51 @@ import { TUserDto } from '~/.server/admin/dto/user.dto';
 import { hasAdminRole } from '~/admin/utils/access.util';
 import { TranslationsCard } from './TranslationsCard';
 import { TProductTranslationDto } from '~/.server/admin/dto/productTranslation.dto';
+import { TCategoryTranslationDto } from '~/.server/admin/dto/categoryTranslation.dto';
+import { CategoryTranslationsCard } from './CategoryTranslationsCard';
 
 export type SingleProps = {
   user: TUserDto;
   product: TProductDto;
   categories: TCategoryDto[];
   reviews: TProductReviewDto[]
-  translations: TProductTranslationDto[];
+  productTranslations: TProductTranslationDto[];
+  categoryTranslations: TCategoryTranslationDto[];
   pagination: IOffsetPaginationInfoDto;
 }
 
-export const Single: FC<SingleProps> = ({user, product, categories, reviews, translations, pagination}) => {
+export const Single: FC<SingleProps> = ({
+  user,
+  product,
+  categories,
+  reviews,
+  productTranslations,
+  categoryTranslations,
+  pagination,
+}) => {
 
   return (
     <Layout>
       <Layout.Section>
         <BlockStack gap="500">
-          <PrimaryInfoCard product={product} translations={translations} />
-          {hasAdminRole(user) && <ReviewsCard reviews={reviews} pagination={pagination} />}
+          <PrimaryInfoCard
+            product={product}
+            productTranslations={productTranslations}
+          />
+          {hasAdminRole(user) && (
+            <ReviewsCard reviews={reviews} pagination={pagination} />
+          )}
         </BlockStack>
       </Layout.Section>
 
       <Layout.Section variant="oneThird">
         <BlockStack gap="500">
-          <CategoryCard product={product} categories={categories} />
-          <TranslationsCard translations={translations} />
+          <TranslationsCard productTranslations={productTranslations} />
+          <CategoryCard product={product} categories={categories} categoryTranslations={categoryTranslations} />
+          <CategoryTranslationsCard
+            categoryTranslations={categoryTranslations}
+            categoryId={product.categoryId}
+          />
         </BlockStack>
       </Layout.Section>
     </Layout>
