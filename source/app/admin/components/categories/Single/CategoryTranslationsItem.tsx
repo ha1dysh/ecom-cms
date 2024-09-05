@@ -1,9 +1,6 @@
 import { BlockStack, InlineStack, Button, Divider, Modal, Text } from "@shopify/polaris";
 import { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { TProductTranslationDto } from "~/.server/admin/dto/productTranslation.dto";
-import { TranslationsDelete } from "./TranslationDelete";
-import { TranslationsUpdate } from "./TranslationsUpdate";
 import { EditIcon, DeleteIcon } from "@shopify/polaris-icons";
 import { TCategoryTranslationDto } from "~/.server/admin/dto/categoryTranslation.dto";
 import { CategoryTranslationsUpdate } from "./CategoryTranslationsUpdate";

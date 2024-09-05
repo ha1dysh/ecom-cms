@@ -4,7 +4,7 @@ import { z } from "zod";
 import { EAdminProductAction, FORM_ACTION_FIELD } from "~/admin/constants/action.constant";
 
 const idRule = z.coerce.number().positive({message: 'Id is required'});
-const langRule = z.nativeEnum($Enums.Languages, {message: 'Language is required'});
+const langRule = z.nativeEnum($Enums.Language, {message: 'Language is required'});
 const titleRule = z.string().trim().min(1, {message: 'Title is required'});
 const descriptionRule = z.string().trim().min(1, {message: 'Description is required'}).max(1024, {message: 'Description max length: 1024'});
 

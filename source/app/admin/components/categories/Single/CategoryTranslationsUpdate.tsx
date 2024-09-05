@@ -1,15 +1,13 @@
-import {Box, Button, Divider, FormLayout, InlineStack} from '@shopify/polaris';
-import {FC} from 'react';
-import {ValidatedForm} from 'remix-validated-form';
-import {ValidatedSubmitButton} from '~/admin/ui/ValidatedSubmitButton/ValidatedSubmitButton';
-import {ValidatedAction} from '~/admin/ui/ValidatedAction/ValidatedAction';
-import {EAdminProductAction} from '~/admin/constants/action.constant';
+import { Box, Button, Divider, FormLayout, InlineStack } from '@shopify/polaris';
+import { FC } from "react";
+import { ValidatedForm } from "remix-validated-form";
+import { ValidatedSubmitButton } from "~/admin/ui/ValidatedSubmitButton/ValidatedSubmitButton";
+import { ValidatedAction } from "~/admin/ui/ValidatedAction/ValidatedAction";
+import { EAdminCategoryAction } from "~/admin/constants/action.constant";
 import { useTranslation } from 'react-i18next';
 import { ValidatedTextField } from '~/admin/ui/ValidatedTextField/ValidatedTextField';
 import { ValidatedSelect } from '~/admin/ui/ValidatedSelect/ValidatedSelect';
-import { TranslationUpdateFormValidator } from './TranslationsForm.validator';
 import { $Enums } from '@prisma/client';
-import { TProductTranslationDto } from '~/.server/admin/dto/productTranslation.dto';
 import { TCategoryTranslationDto } from '~/.server/admin/dto/categoryTranslation.dto';
 import { CategoryTranslationUpdateFormValidator } from './CategoryTranslationsForm.validator';
 
@@ -28,7 +26,7 @@ export const CategoryTranslationsUpdate: FC<Props> = ({ toggleActive, translatio
       onSubmit={toggleActive}
     >
       <Box padding="200" paddingBlockEnd="0">
-        <ValidatedAction action={EAdminProductAction.categoryUpdateTranslation} />
+        <ValidatedAction action={EAdminCategoryAction.categoryUpdateTranslation} />
         <input hidden name="id" defaultValue={translation.id} />
       </Box>
 
@@ -39,7 +37,8 @@ export const CategoryTranslationsUpdate: FC<Props> = ({ toggleActive, translatio
             label={t('translations.language')}
             options={[
               { label: t('translations.selectLanguage'), value: "" },
-              { label: t('translations.Ukrainian'), value: $Enums.Languages.UA },
+              { label: t('translations.English'), value: $Enums.Language.EN },
+              { label: t('translations.Ukrainian'), value: $Enums.Language.UA },
             ]}
             defaultValue={translation.language}
           />

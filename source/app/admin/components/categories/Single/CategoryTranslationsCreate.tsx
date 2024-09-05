@@ -3,13 +3,11 @@ import {FC} from 'react';
 import {ValidatedForm, validationError} from 'remix-validated-form';
 import {ValidatedSubmitButton} from '~/admin/ui/ValidatedSubmitButton/ValidatedSubmitButton';
 import {ValidatedAction} from '~/admin/ui/ValidatedAction/ValidatedAction';
-import {EAdminProductAction} from '~/admin/constants/action.constant';
+import {EAdminCategoryAction} from '~/admin/constants/action.constant';
 import { useTranslation } from 'react-i18next';
 import { ValidatedTextField } from '~/admin/ui/ValidatedTextField/ValidatedTextField';
 import { ValidatedSelect } from '~/admin/ui/ValidatedSelect/ValidatedSelect';
-import { TranslationCreateFormValidator } from './TranslationsForm.validator';
 import { $Enums } from '@prisma/client';
-import { TProductTranslationDto } from '~/.server/admin/dto/productTranslation.dto';
 import { TCategoryTranslationDto } from '~/.server/admin/dto/categoryTranslation.dto';
 import { CategoryTranslationsCreateFormValidator } from './CategoryTranslationsForm.validator';
 
@@ -20,7 +18,7 @@ type Props = {
 }
 
 type SubmittedData = {
-  language: $Enums.Languages;
+  language: $Enums.Language;
   title: string;
 }
 
@@ -47,7 +45,7 @@ export const CategoryTranslationsCreate: FC<Props> = ({ categoryId, toggleActive
       onSubmit={onSubmit}
     >
       <Box padding="200" paddingBlockEnd="0">
-        <ValidatedAction action={EAdminProductAction.categoryCreateTranslation} />
+        <ValidatedAction action={EAdminCategoryAction.categoryCreateTranslation} />
         <input type="hidden" name="categoryId" value={categoryId} />
       </Box>
 
@@ -58,7 +56,8 @@ export const CategoryTranslationsCreate: FC<Props> = ({ categoryId, toggleActive
             label={t('translations.language')}
             options={[
               { label: t('translations.selectLanguage'), value: "" },
-              { label: t('translations.Ukrainian'), value: $Enums.Languages.UA },
+              { label: t('translations.English'), value: $Enums.Language.EN },
+              { label: t('translations.Ukrainian'), value: $Enums.Language.UA },
             ]}
           />
           <ValidatedTextField

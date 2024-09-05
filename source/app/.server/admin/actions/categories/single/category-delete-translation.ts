@@ -1,13 +1,13 @@
 import { json } from "@remix-run/react";
 import { validationError } from "remix-validated-form";
 import { prisma } from "~/.server/shared/services/prisma.service";
-import { CategoryTranslationDeleteFormValidator } from "~/admin/components/products/Single/CategoryTranslationsForm.validator";
+import { CategoryTranslationDeleteFormValidator } from "~/admin/components/categories/Single/CategoryTranslationsForm.validator";
 
 type Args = {
   formData: any;
 };
 
-export async function CategoryDeleteTranslation({ formData }: Args) {
+export async function deleteCategoryTranslation({ formData }: Args) {
   const { data, error } = await CategoryTranslationDeleteFormValidator.validate(formData);
 
   if (error) {

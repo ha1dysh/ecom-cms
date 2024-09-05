@@ -40,7 +40,7 @@ export default function AdminCategoriesIdIndex() {
       }}
       secondaryActions={secondaryActions}
     >
-      <Single category={data?.category}/>
+      <Single category={data?.category} translations={data?.categoryTranslations}/>
       <Modal
         size="small"
         open={active}

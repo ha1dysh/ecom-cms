@@ -1,10 +1,7 @@
 import { BlockStack, Box, Button, Card, InlineGrid, Modal, Text } from "@shopify/polaris";
 import { PlusIcon } from "@shopify/polaris-icons";
 import { useCallback, useState } from "react";
-import { TranslationsCreate } from "./TranslationsCreate";
-import { TProductTranslationDto } from "~/.server/admin/dto/productTranslation.dto";
 import { useTranslation } from "react-i18next";
-import { TranslationItem } from "./TranslationsItem";
 import { TCategoryTranslationDto } from "~/.server/admin/dto/categoryTranslation.dto";
 import { CategoryTranslationsCreate } from "./CategoryTranslationsCreate";
 import { CategoryTranslationItem } from "./CategoryTranslationsItem";

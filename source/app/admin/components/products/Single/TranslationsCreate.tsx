@@ -17,7 +17,7 @@ type Props = {
 }
 
 type SubmittedData = {
-  language: $Enums.Languages;
+  language: $Enums.Language;
   title: string;
   description: string;
 }
@@ -55,7 +55,8 @@ export const TranslationsCreate: FC<Props> = ({ toggleActive, productTranslation
             label={t('translations.language')}
             options={[
               { label: t('translations.selectLanguage'), value: "" },
-              { label: t('translations.Ukrainian'), value: $Enums.Languages.UA },
+              { label: t('translations.English'), value: $Enums.Language.EN },
+              { label: t('translations.Ukrainian'), value: $Enums.Language.UA },
             ]}
           />
           <ValidatedTextField

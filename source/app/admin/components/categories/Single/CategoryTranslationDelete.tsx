@@ -3,7 +3,7 @@ import {FC} from 'react';
 import {ValidatedForm} from 'remix-validated-form';
 import {ValidatedSubmitButton} from '~/admin/ui/ValidatedSubmitButton/ValidatedSubmitButton';
 import {ValidatedAction} from '~/admin/ui/ValidatedAction/ValidatedAction';
-import {EAdminProductAction} from '~/admin/constants/action.constant';
+import {EAdminCategoryAction, EAdminProductAction} from '~/admin/constants/action.constant';
 import { useTranslation } from 'react-i18next';
 import { TCategoryTranslationDto } from '~/.server/admin/dto/categoryTranslation.dto';
 import { CategoryTranslationDeleteFormValidator } from './CategoryTranslationsForm.validator';
@@ -19,7 +19,7 @@ export const CategoryTranslationsDelete: FC<Props> = ({translation, toggleActive
   return (
     <ValidatedForm validator={CategoryTranslationDeleteFormValidator} method="post" onSubmit={toggleActive}>
       <Box padding="200" paddingBlockEnd="0">
-        <ValidatedAction action={EAdminProductAction.categoryDeleteTranslation}/>
+        <ValidatedAction action={EAdminCategoryAction.categoryDeleteTranslation}/>
         <input hidden name="id" defaultValue={translation.id} />
       </Box>
 

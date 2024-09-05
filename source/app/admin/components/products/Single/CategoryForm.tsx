@@ -4,7 +4,6 @@ import {ValidatedForm} from 'remix-validated-form';
 import {ValidatedSubmitButton} from '~/admin/ui/ValidatedSubmitButton/ValidatedSubmitButton';
 import {ValidatedAction} from '~/admin/ui/ValidatedAction/ValidatedAction';
 import {EAdminProductAction} from '~/admin/constants/action.constant';
-import {categoryFormValidator} from '~/admin/components/products/Single/CategoryForm.validator';
 import {TCategoryDto} from '~/.server/admin/dto/category.dto';
 import {ValidatedLazyAutocomplete} from '~/admin/ui/ValidatedLazyAutocomplete/ValidatedLazyAutocomplete';
 import {EAdminNavigation} from '~/admin/constants/navigation.constant';
@@ -13,6 +12,7 @@ import {
   TAdminApiCategoriesLoaderData
 } from '~/.server/admin/loaders/api/categories/index/loader';
 import { useTranslation } from 'react-i18next';
+import { categoryFormValidator } from './CategoryForm.validator';
 
 type Props = {
   category?: Pick<TCategoryDto, 'id' | 'title' | 'slug'> | null;

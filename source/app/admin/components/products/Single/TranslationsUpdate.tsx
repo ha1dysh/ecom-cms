@@ -37,7 +37,8 @@ export const TranslationsUpdate: FC<Props> = ({ toggleActive, translation }) => 
             label={t('translations.language')}
             options={[
               { label: t('translations.selectLanguage'), value: "" },
-              { label: t('translations.Ukrainian'), value: $Enums.Languages.UA },
+              { label: t('translations.English'), value: $Enums.Language.EN },
+              { label: t('translations.Ukrainian'), value: $Enums.Language.UA },
             ]}
             defaultValue={translation.language}
           />

@@ -5,6 +5,7 @@ import {prisma} from '~/.server/shared/services/prisma.service';
 import {categoryMapper} from '~/.server/admin/mappers/category.mapper';
 import {SerializeFrom} from '@remix-run/server-runtime';
 import { hasAdminRoleOrRedirect } from '~/.server/admin/utils/auth.util';
+import { categoryTranslationMapper } from '~/.server/admin/mappers/categorryTranslations.mapper';
 
 export async function loader({request, params}: LoaderFunctionArgs) {
   const authUser = await getAuthUser(request);
@@ -15,17 +16,23 @@ export async function loader({request, params}: LoaderFunctionArgs) {
     return redirect(EAdminNavigation.categories);
   }
 
-  // get user
   const category = await prisma.category.findFirst({
     where: {id: Number(id)}
   });
 
-  // if not exist
   if (!category) {
     return redirect(EAdminNavigation.categories);
   }
 
-  return json({category: categoryMapper(category)});
+  const categoryTranslations = await prisma.categoryTranslation.findMany({
+    where: { categoryId: category.id },
+    orderBy: { language: "asc" },
+  });
+
+  return json({
+    category: categoryMapper(category),
+    categoryTranslations: categoryTranslations.map(categoryTranslationMapper),
+  });
 }
 
 export type TAdminCategoriesSingleLoader = typeof loader;

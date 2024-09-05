@@ -1,8 +1,7 @@
 import { json } from "@remix-run/react";
 import { validationError } from "remix-validated-form";
 import { prisma } from "~/.server/shared/services/prisma.service";
-import { CategoryTranslationsCreateFormValidator } from "~/admin/components/products/Single/CategoryTranslationsForm.validator";
-import { TranslationCreateFormValidator } from "~/admin/components/products/Single/TranslationsForm.validator";
+import { CategoryTranslationsCreateFormValidator } from "~/admin/components/categories/Single/CategoryTranslationsForm.validator";
 
 type Args = {
   formData: any;

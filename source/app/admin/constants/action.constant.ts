@@ -17,6 +17,11 @@ export enum EAdminProductAction {
   createTranslation = 'create_translation',
   deleteTranslation = 'delete_translation',
   updateTranslation = 'update_translation',
+
+}
+
+export enum EAdminCategoryAction {
+  deleteCategory = 'delete_category',
   categoryCreateTranslation = 'category_create_translation',
   categoryDeleteTranslation = 'category_delete_translation',
   categoryUpdateTranslation = 'category_update_translation',

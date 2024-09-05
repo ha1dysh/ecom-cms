@@ -9,9 +9,6 @@ import { editCategory } from "~/.server/admin/actions/products/single/edit-categ
 import { createProductTranslation } from "./create-translation";
 import { updateProductTranslation } from "./update-translation";
 import { deleteProductTranslation } from "./delete-translation";
-import { createCategoryTranslation } from "./category-create-translation";
-import { CategoryUpdateProductTranslation } from "./category-update-translation";
-import { CategoryDeleteTranslation } from "./category-delete-translation";
 
 export async function action({ request, params }: ActionFunctionArgs) {
   await getAuthUser(request);
@@ -21,18 +18,15 @@ export async function action({ request, params }: ActionFunctionArgs) {
     return redirect(EAdminNavigation.products);
   }
 
-  // get product
   const product = await prisma.product.findFirst({
     where: { id: Number(id) },
   });
 
-  // if not exist
   if (!product) {
     return redirect(EAdminNavigation.products);
   }
 
   const formData = await request.formData();
-  console.log('formData', formData);
 
   switch (formData.get(FORM_ACTION_FIELD)) {
     case EAdminProductAction.updateCategory:
@@ -45,12 +39,6 @@ export async function action({ request, params }: ActionFunctionArgs) {
       return updateProductTranslation({ productId: product.id, formData });
     case EAdminProductAction.deleteTranslation:
       return deleteProductTranslation({ formData });
-    case EAdminProductAction.categoryCreateTranslation:
-      return createCategoryTranslation({ formData });
-    case EAdminProductAction.categoryUpdateTranslation:
-      return CategoryUpdateProductTranslation({ productId: product.id, formData });
-    case EAdminProductAction.categoryDeleteTranslation:
-      return CategoryDeleteTranslation({ formData });
   }
 
   return validationError({
