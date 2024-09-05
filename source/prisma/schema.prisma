@@ -20,6 +20,7 @@ model User {
   email     String    @unique
   password  String
   role      AdminRole @default(STUFF)
+  language  Language @default(EN)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
@@ -95,7 +96,7 @@ model Category {
 model CategoryTranslation {
   id         Int       @id @default(autoincrement())
   categoryId Int
-  language   Languages @default(UA)
+  language   Language @default(EN)
   title      String
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
@@ -148,7 +149,7 @@ model Product {
 model ProductTranslation {
   id          Int       @id @default(autoincrement())
   productId   Int
-  language    Languages @default(UA)
+  language    Language @default(EN)
   title       String
   description String
   createdAt   DateTime  @default(now())
@@ -195,6 +196,7 @@ enum ProductStatus {
   ARCHIVED
 }
 
-enum Languages {
+enum Language {
+  EN
   UA
 }

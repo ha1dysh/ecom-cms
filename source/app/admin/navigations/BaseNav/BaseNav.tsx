@@ -15,7 +15,6 @@ export const BaseNav: FC<Props> = ({user}) => {
   const location = useLocation();
   const {t, i18n} = useTranslation()
 
-
   const items = useMemo(() => {
     if (!hasAdminRole(user)) {
       return [
@@ -81,7 +80,7 @@ export const BaseNav: FC<Props> = ({user}) => {
         ],
       },
     ];
-  }, [user.role]);
+  }, [user.role, i18n.language]);
 
   return (
     <Navigation location={location.pathname}>
