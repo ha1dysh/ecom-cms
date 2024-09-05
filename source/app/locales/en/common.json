@@ -1,4 +1,7 @@
 {
+  "dashboard": {
+    "meta.title": "Dashboard"
+  },
   "navMenu": {
     "home": "Home",
     "users": "Users",

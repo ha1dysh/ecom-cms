@@ -6,7 +6,7 @@ import { isbot } from "isbot";
 import { createInstance } from "i18next";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import type { EntryContext } from "@remix-run/node";
-import * as i18n from "./locales/i18n.config";
+import i18n from "./locales/i18n.config";
 import i18nServer from "./locales/i18n.server";
 
 const ABORT_DELAY = 5_000;
@@ -40,13 +40,8 @@ async function handleBotRequest(
 ) {
   const instance = createInstance();
   const lng = await i18nServer.getLocale(request);
-  const ns = i18nServer.getRouteNamespaces(remixContext);
 
-  await instance.use(initReactI18next).init({
-    ...i18n,
-    lng,
-    ns,
-  });
+  await instance.use(initReactI18next).init({ ...i18n, lng });
 
   return new Promise((resolve, reject) => {
     let shellRendered = false;
