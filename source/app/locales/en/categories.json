@@ -1,49 +1,48 @@
 {
-  "title": "Categories",
-  "createButton": "Create category",
-
-  "table": {
-    "title": "Category name",
-    "slug": "Slug",
-    "description": "Description",
-    "createdAt": "Created at",
-    "updatedAt": "Updated at",
-    "deleteAt": "Delete at"
-  },
-
-  "filters": {
-    "createdAt": "Created",
-    "updatedAt": "Updated",
-    "deleteAt": "Deleted",
-    "searchCategories": "Search categories",
-    "active": "Active",
-    "inactive": "Inactive",
-    "softDeleteStatus": "Soft delete status",
-    "oldToNew": "Oldest to newest",
-    "newToOld": "Newest to oldest"
-  },
-
-  "single": {
-    "deleteButton": "Delete category",
-    "primaryInfo": "Primary info",
-    "slug": "Slug",
-    "title": "Title",
-    "description": "Description"
-  },
-
-  "delete": {
-    "title": "Delete category",
-    "paragraph": "Are you sure you want to delete",
-    "deleteButton": "Delete",
-    "cancelButton": "Cancel"
-  },
-
-  "edit": {
-    "title": "Edit category primary info",
-    "saveButton": "Save",
-    "primaryInfo": "Primary info",
-    "slug": "Slug",
-    "titleCategory": "Title",
-    "description": "Description"
-  }
+  "createButton" : "Create category",
+  "delete.cancelButton" : "Cancel",
+  "delete.deleteButton" : "Delete",
+  "delete.paragraph" : "Are you sure you want to delete",
+  "delete.title" : "Delete category",
+  "edit.description" : "Description",
+  "edit.primaryInfo" : "Primary info",
+  "edit.saveButton" : "Save",
+  "edit.slug" : "Slug",
+  "edit.title" : "Edit category primary info",
+  "edit.titleCategory" : "Title",
+  "filters.active" : "Active",
+  "filters.createdAt" : "Created",
+  "filters.deleteAt" : "Deleted",
+  "filters.inactive" : "Inactive",
+  "filters.newToOld" : "Newest to oldest",
+  "filters.oldToNew" : "Oldest to newest",
+  "filters.searchCategories" : "Search categories",
+  "filters.softDeleteStatus" : "Soft delete status",
+  "filters.updatedAt" : "Updated",
+  "single.deleteButton" : "Delete category",
+  "single.description" : "Description",
+  "single.primaryInfo" : "Primary info",
+  "single.slug" : "Slug",
+  "single.title" : "Title",
+  "table.createdAt" : "Created at",
+  "table.deleteAt" : "Delete at",
+  "table.description" : "Description",
+  "table.slug" : "Slug",
+  "table.title" : "Category name",
+  "table.updatedAt" : "Updated at",
+  "title" : "Categories",
+  "translations.Ukrainian" : "Ukrainian",
+  "translations.cancelButton" : "Cancel",
+  "translations.cardTitle" : "Translations",
+  "translations.createTitle" : "Create translation",
+  "translations.deleteButton" : "Delete",
+  "translations.deleteParagraph" : "Are you sure you want to delete",
+  "translations.deleteTitle" : "Delete translation",
+  "translations.description" : "Description",
+  "translations.english" : "English",
+  "translations.language" : "Language",
+  "translations.saveButton" : "Save",
+  "translations.selectLanguage" : "Select language",
+  "translations.title" : "Title",
+  "translations.updateTitle" : "Update translation"
 }

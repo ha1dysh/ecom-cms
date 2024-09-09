@@ -55,8 +55,8 @@ export const TranslationsCreate: FC<Props> = ({ toggleActive, productTranslation
             label={t('translations.language')}
             options={[
               { label: t('translations.selectLanguage'), value: "" },
-              { label: t('translations.English'), value: $Enums.Language.EN },
-              { label: t('translations.Ukrainian'), value: $Enums.Language.UA },
+              { label: t('translations.english'), value: $Enums.Language.EN },
+              { label: t('translations.ukrainian'), value: $Enums.Language.UK },
             ]}
           />
           <ValidatedTextField

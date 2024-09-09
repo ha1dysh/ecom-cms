@@ -23,7 +23,7 @@ type SubmittedData = {
 }
 
 export const CategoryTranslationsCreate: FC<Props> = ({ categoryId, toggleActive, categoryTranslations }) => {
-  const { t } = useTranslation("products");
+  const { t } = useTranslation("categories");
 
   function onSubmit(data: SubmittedData) {
     const isLangExist = categoryTranslations?.some((t) => t.language === data.language);
@@ -56,8 +56,8 @@ export const CategoryTranslationsCreate: FC<Props> = ({ categoryId, toggleActive
             label={t('translations.language')}
             options={[
               { label: t('translations.selectLanguage'), value: "" },
-              { label: t('translations.English'), value: $Enums.Language.EN },
-              { label: t('translations.Ukrainian'), value: $Enums.Language.UA },
+              { label: t('translations.english'), value: $Enums.Language.EN },
+              { label: t('translations.ukrainian'), value: $Enums.Language.UK },
             ]}
           />
           <ValidatedTextField
@@ -73,10 +73,10 @@ export const CategoryTranslationsCreate: FC<Props> = ({ categoryId, toggleActive
       <Box padding="400">
         <InlineStack direction="row-reverse" align="end" gap="200">
           <ValidatedSubmitButton
-            text={t("category.saveButton")}
+            text={t("translations.saveButton")}
             variant="primary"
           />
-          <Button onClick={toggleActive}>{t("category.cancelButton")}</Button>
+          <Button onClick={toggleActive}>{t("translations.cancelButton")}</Button>
         </InlineStack>
       </Box>
     </ValidatedForm>

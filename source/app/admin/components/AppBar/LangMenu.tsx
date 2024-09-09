@@ -35,7 +35,7 @@ export function LangMenu() {
           actionRole="menuitem"
           items={[
             { content: 'English', onAction: () => handleLanguageChange('en') },
-            { content: 'Ukraine', onAction: () => handleLanguageChange('ua') },
+            { content: 'Ukraine', onAction: () => handleLanguageChange('uk') },
           ]}
         />
       </Popover>

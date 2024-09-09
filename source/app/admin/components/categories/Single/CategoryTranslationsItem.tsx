@@ -7,7 +7,7 @@ import { CategoryTranslationsUpdate } from "./CategoryTranslationsUpdate";
 import { CategoryTranslationsDelete } from "./CategoryTranslationDelete";
 
 export function CategoryTranslationItem({ translation }: { translation: TCategoryTranslationDto }) {
-  const { t } = useTranslation('products');
+  const { t } = useTranslation('categories');
 
   const [updateActive, setUpdateActive] = useState(false);
   const toggleUpdate = useCallback(() => setUpdateActive((active) => !active), []);

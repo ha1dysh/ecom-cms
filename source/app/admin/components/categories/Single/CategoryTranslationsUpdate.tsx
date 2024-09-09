@@ -17,7 +17,7 @@ type Props = {
 }
 
 export const CategoryTranslationsUpdate: FC<Props> = ({ toggleActive, translation }) => {
-  const { t } = useTranslation("products");
+  const { t } = useTranslation("categories");
 
   return (
     <ValidatedForm
@@ -37,8 +37,8 @@ export const CategoryTranslationsUpdate: FC<Props> = ({ toggleActive, translatio
             label={t('translations.language')}
             options={[
               { label: t('translations.selectLanguage'), value: "" },
-              { label: t('translations.English'), value: $Enums.Language.EN },
-              { label: t('translations.Ukrainian'), value: $Enums.Language.UA },
+              { label: t('translations.english'), value: $Enums.Language.EN },
+              { label: t('translations.ukrainian'), value: $Enums.Language.UK },
             ]}
             defaultValue={translation.language}
           />

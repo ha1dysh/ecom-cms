@@ -14,7 +14,7 @@ type Props = {
 export function CategoryTranslationsCard({ categoryId, categoryTranslations }: Props) {
   const [active, setActive] = useState(false);
   const toggleCreate = useCallback(() => setActive((active) => !active), []);
-  const { t } = useTranslation('products');
+  const { t } = useTranslation('categories');
 
   if (!categoryId) {
     return null;
@@ -25,11 +25,11 @@ export function CategoryTranslationsCard({ categoryId, categoryTranslations }: P
       <BlockStack gap="200">
         <InlineGrid columns="1fr auto">
           <Text as="h2" variant="headingSm">
-            {t("categoryTranslations.cardTitle")}
+            {t("translations.cardTitle")}
           </Text>
           <Button
             onClick={toggleCreate}
-            accessibilityLabel={t("categoryTranslations.createTitle")}
+            accessibilityLabel={t("translations.createTitle")}
             icon={PlusIcon}
           />
         </InlineGrid>
@@ -47,7 +47,7 @@ export function CategoryTranslationsCard({ categoryId, categoryTranslations }: P
         size="small"
         open={active}
         onClose={toggleCreate}
-        title={t("categoryTranslations.createTitle")}
+        title={t("translations.createTitle")}
       >
         <CategoryTranslationsCreate
           toggleActive={toggleCreate}
