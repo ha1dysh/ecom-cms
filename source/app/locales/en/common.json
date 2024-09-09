@@ -1,14 +1,9 @@
 {
-  "dashboard": {
-    "meta.title": "Dashboard"
-  },
-  "navMenu": {
-    "home": "Home",
-    "users": "Users",
-    "customers": "Customers",
-    "products": "Products",
-    "categories": "Categories",
-    "reviews": "Reviews",
-    "orders": "Orders"
-  }
+  "navMenu.categories" : "Categories",
+  "navMenu.customers" : "Customers",
+  "navMenu.home" : "Home",
+  "navMenu.orders" : "Orders",
+  "navMenu.products" : "Products",
+  "navMenu.reviews" : "Reviews",
+  "navMenu.users" : "Users"
 }

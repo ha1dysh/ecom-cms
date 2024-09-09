@@ -198,5 +198,5 @@ enum ProductStatus {
 
 enum Language {
   EN
-  UA
+  UK
 }

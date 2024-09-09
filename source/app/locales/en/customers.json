@@ -1,77 +1,56 @@
 {
-  "title": "Customers",
-  "createButton": "Create customer",
-
-  "table": {
-    "customerName": "Customer name",
-    "email": "Email",
-    "createdAt": "Created at",
-    "updatedAt": "Updated at",
-    "deleteAt": "Delete at",
-    "oldestToNewest": "Oldest to newest",
-    "newestToOldest": "Newest to oldest",
-    "searchCustomers": "Search customers",
-    "softDeleteStatusFilter": "Soft delete status",
-    "active": "Active",
-    "inactive": "Inactive"
-  },
-
-  "single": {
-    "deleteButton": "Delete customer",
-    "primaryInfo": "Primary info",
-    "firstName": "First name",
-    "lastName": "Last name",
-    "email": "Email",
-    "phone": "Phone",
-    "addressTitle": "Address info",
-    "editButton": "Edit",
-    "contactInformation": "Contact information",
-    "address": "Address"
-  },
-
-  "new": {
-    "title": "Create new customer",
-    "saveButton": "Create",
-    "security": "Security",
-    "password": "Password",
-    "confirmPassword": "Confirm password"
-  },
-
-  "delete": {
-    "title": "Delete customer",
-    "paragraph": "Are you sure you want to delete",
-    "deleteButton": "Delete",
-    "cancelButton": "Cancel"
-  },
-
-  "edit": {
-    "title": "Edit customer primary info",
-    "saveButton": "Save",
-    "primaryInfo": "Primary info",
-    "firstName": "First name",
-    "lastName": "Last name",
-    "email": "Email",
-    "phone": "Phone"
-  },
-
-  "newAddress": {
-    "title": "Create new address for customer",
-    "saveButton": "Save",
-    "deliveryAddress": "Delivery address",
-    "country": "Country",
-    "firstName": "First name",
-    "lastName": "Last name",
-    "company": "Company",
-    "address": "Address",
-    "apartment": "Apartment, suite, etc.",
-    "city": "City",
-    "postalCode": "Postal code",
-    "phone": "Phone"
-  },
-
-  "editAddress": {
-    "title": "Edit address for customer",
-    "deleteButton": "Delete address",
-    "saveButton": "Save"
-  }
+  "createButton" : "Create customer",
+  "delete.cancelButton" : "Cancel",
+  "delete.deleteButton" : "Delete",
+  "delete.paragraph" : "Are you sure you want to delete",
+  "delete.title" : "Delete customer",
+  "edit.email" : "Email",
+  "edit.firstName" : "First name",
+  "edit.lastName" : "Last name",
+  "edit.phone" : "Phone",
+  "edit.primaryInfo" : "Primary info",
+  "edit.saveButton" : "Save",
+  "edit.title" : "Edit customer primary info",
+  "editAddress.deleteButton" : "Delete address",
+  "editAddress.saveButton" : "Save",
+  "editAddress.title" : "Edit address for customer",
+  "new.confirmPassword" : "Confirm password",
+  "new.password" : "Password",
+  "new.saveButton" : "Create",
+  "new.security" : "Security",
+  "new.title" : "Create new customer",
+  "newAddress.address" : "Address",
+  "newAddress.apartment" : "Apartment, suite, etc.",
+  "newAddress.city" : "City",
+  "newAddress.company" : "Company",
+  "newAddress.country" : "Country",
+  "newAddress.deliveryAddress" : "Delivery address",
+  "newAddress.firstName" : "First name",
+  "newAddress.lastName" : "Last name",
+  "newAddress.phone" : "Phone",
+  "newAddress.postalCode" : "Postal code",
+  "newAddress.saveButton" : "Save",
+  "newAddress.title" : "Create new address for customer",
+  "single.address" : "Address",
+  "single.addressTitle" : "Address info",
+  "single.contactInformation" : "Contact information",
+  "single.deleteButton" : "Delete customer",
+  "single.editButton" : "Edit",
+  "single.email" : "Email",
+  "single.firstName" : "First name",
+  "single.lastName" : "Last name",
+  "single.phone" : "Phone",
+  "single.primaryInfo" : "Primary info",
+  "table.active" : "Active",
+  "table.createdAt" : "Created at",
+  "table.customerName" : "Customer name",
+  "table.deleteAt" : "Delete at",
+  "table.email" : "Email",
+  "table.inactive" : "Inactive",
+  "table.newestToOldest" : "Newest to oldest",
+  "table.oldestToNewest" : "Oldest to newest",
+  "table.searchCustomers" : "Search customers",
+  "table.softDeleteStatusFilter" : "Soft delete status",
+  "table.updatedAt" : "Updated at",
+  "title" : "Customers"
 }

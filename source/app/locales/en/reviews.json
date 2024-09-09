@@ -1,76 +1,55 @@
 {
-  "title": "Reviews",
-  "createButton": "Create review",
-
-  "table": {
-    "customer": "Customer",
-    "product": "Product",
-    "rate": "Rate",
-    "review": "Review",
-    "createdAt": "Created at",
-    "updatedAt": "Updated at",
-    "deleteAt": "Delete at"
-  },
-
-  "filters": {
-    "rate": "Rate",
-    "createdAt": "Created",
-    "updatedAt": "Updated",
-    "deleteAt": "Deleted",
-    "searchReviews": "Search reviews",
-    "active": "Active",
-    "inactive": "Inactive",
-    "softDeleteStatus": "Soft delete status",
-    "highToLow": "High to low",
-    "lowToHigh": "Low to high",
-    "oldToNew": "Oldest to newest",
-    "newToOld": "Newest to oldest"
-  },
-
-  "single": {
-    "title": "Review",
-    "deleteButton": "Delete review",
-    "primaryInfo": "Primary info",
-    "customer": "Customer full name",
-    "product": "Product title",
-    "rate": "Rate",
-    "review": "Review",
-    "createdAt": "Created at",
-    "updatedAt": "Updated at",
-    "deleteAt": "Delete at"
-  },
-
-  "new": {
-    "title": "Create new review",
-    "saveButton": "Create",
-    "primaryInfo": "Primary info",
-    "customer": "Customer",
-    "product": "Product",
-    "rate": "Rate",
-    "review": "Review",
-    "createdAt": "Created at",
-    "updatedAt": "Updated at",
-    "deleteAt": "Delete at"
-  },
-
-  "edit": {
-    "title": "Edit review",
-    "saveButton": "Save"
-  },
-
-  "delete": {
-    "title": "Delete review",
-    "paragraph": "Are you sure you want to delete",
-    "deleteButton": "Delete",
-    "cancelButton": "Cancel"
-  },
-
-  "card": {
-    "title": "Reviews",
-    "rate": "Rate",
-    "review": "Review",
-    "emptyHeading": "There are no reviews yet",
-    "emptyParagraph": "You can use the Reviews section to create, edit, and delete reviews.",
-    "createButton": "Create Review"
-  }
+  "card.createButton" : "Create Review",
+  "card.emptyHeading" : "There are no reviews yet",
+  "card.emptyParagraph" : "You can use the Reviews section to create, edit, and delete reviews.",
+  "card.rate" : "Rate",
+  "card.review" : "Review",
+  "card.title" : "Reviews",
+  "createButton" : "Create review",
+  "delete.cancelButton" : "Cancel",
+  "delete.deleteButton" : "Delete",
+  "delete.paragraph" : "Are you sure you want to delete",
+  "delete.title" : "Delete review",
+  "edit.saveButton" : "Save",
+  "edit.title" : "Edit review",
+  "filters.active" : "Active",
+  "filters.createdAt" : "Created",
+  "filters.deleteAt" : "Deleted",
+  "filters.highToLow" : "High to low",
+  "filters.inactive" : "Inactive",
+  "filters.lowToHigh" : "Low to high",
+  "filters.newToOld" : "Newest to oldest",
+  "filters.oldToNew" : "Oldest to newest",
+  "filters.rate" : "Rate",
+  "filters.searchReviews" : "Search reviews",
+  "filters.softDeleteStatus" : "Soft delete status",
+  "filters.updatedAt" : "Updated",
+  "new.createdAt" : "Created at",
+  "new.customer" : "Customer",
+  "new.deleteAt" : "Delete at",
+  "new.primaryInfo" : "Primary info",
+  "new.product" : "Product",
+  "new.rate" : "Rate",
+  "new.review" : "Review",
+  "new.saveButton" : "Create",
+  "new.title" : "Create new review",
+  "new.updatedAt" : "Updated at",
+  "single.createdAt" : "Created at",
+  "single.customer" : "Customer full name",
+  "single.deleteAt" : "Delete at",
+  "single.deleteButton" : "Delete review",
+  "single.primaryInfo" : "Primary info",
+  "single.product" : "Product title",
+  "single.rate" : "Rate",
+  "single.review" : "Review",
+  "single.title" : "Review",
+  "single.updatedAt" : "Updated at",
+  "table.createdAt" : "Created at",
+  "table.customer" : "Customer",
+  "table.deleteAt" : "Delete at",
+  "table.product" : "Product",
+  "table.rate" : "Rate",
+  "table.review" : "Review",
+  "table.updatedAt" : "Updated at",
+  "title" : "Reviews"
 }
